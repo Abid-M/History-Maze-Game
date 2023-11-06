@@ -41,11 +41,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function fetchQuestions() {
-    console.log("asdhyasjkd")
-    const response = await fetch ("https://history-game-info.onrender.com/medieval")
+    const response = await fetch ("https://history-game-info.onrender.com/random/medieval")
     const data = await response.json()
 
-    console.log(data[0].question)
+    for(let i =0; i<4; i++){
+
+      let label = document.getElementById(`labelOp${i+1}`)
+      let option = document.getElementById(`option${i+1}`)
+
+      label.textContent = data.answers[i].text;
+      option.textContent = data.answers[i].text;
+      option.value = data.answers[i].text
+
+      let question = document.getElementById("question")
+      question.textContent = data.question
+    }
+    
+    checkAnswer(data)
 }
 
 document.addEventListener("keydown", (event) => {
@@ -131,12 +143,33 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-let checkp = document.querySelector("#checkp")
-checkp.addEventListener("submit", (event) => {
-    event.preventDefault();
 
+
+function checkAnswer(data) {
+  let checkp = document.querySelector("#submit")
+  let modal = document.getElementById("myModal");
+
+  checkp.addEventListener("click", () => {
     const selectedValue = document.querySelector('input[name="question"]:checked').value;
-    console.log(selectedValue)
-});
+    let correctAnswer;
+
+    for (let i = 0; i < 4; i++) {
+      if (data.answers[i].value == 1) {
+        correctAnswer = data.answers[i].text
+      }
+    }
+    
+    if (correctAnswer === selectedValue) {
+      alert("success")
+      modal.style.display = "none";
+    } else {        
+      alert(`wrong, the correct answer is ${correctAnswer}`)
+      fetchQuestions();
+    } 
+  }
+)};
+
+module.exports = { checkAnswer }
+
 
 
