@@ -23,12 +23,11 @@ document.addEventListener("DOMContentLoaded", function () {
           cell.classList.add("w");
         }
 
-        if(cell.id === "112"){
-          cell.classList.add("checkpoint1")
+        if(cell.id === "112" || cell.id === "121" || cell.id === "62" || cell.id === "17"){
+          cell.classList.add("checkpoint")
           cell.style.backgroundColor = "green"
           cell.style.borderRadius = "50px"
         }
-
       }
     }
 
