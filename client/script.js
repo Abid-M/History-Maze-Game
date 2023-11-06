@@ -54,9 +54,10 @@ document.addEventListener("keydown", (event) => {
 
             character.style.top = newCell.offsetTop + "px";
             character.style.left = newCell.offsetLeft + "px";
-
-            if(newCell.id.contains(2)){
+          
+            if(newCell.id === "2"){
                 window.alert("YOU WIN!")
+                console.log("win!")
             }
         }
 
