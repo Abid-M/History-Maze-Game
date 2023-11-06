@@ -22,3 +22,8 @@ app.get('/', (req, res) => {
 app.get('/medieval', (req, res) => {
     res.status(200).send(medievalQs)
 })
+
+app.get('/random/medieval', (req, res) => {
+    const randomQ = Math.floor(Math.random()*medievalQs.length)
+    res.status(200).send(medievalQs[randomQ])
+})

@@ -40,6 +40,14 @@ document.addEventListener("DOMContentLoaded", function () {
     character.style.left = startCell.offsetLeft + "px";
 });
 
+async function fetchQuestions() {
+    console.log("asdhyasjkd")
+    const response = await fetch ("https://history-game-info.onrender.com/medieval")
+    const data = await response.json()
+
+    console.log(data[0].question)
+}
+
 document.addEventListener("keydown", (event) => {
     let key = event.key
     let modal = document.getElementById("myModal");
@@ -99,6 +107,7 @@ document.addEventListener("keydown", (event) => {
         character.style.left = newCell.offsetLeft + "px";
 
         if (newCell.classList.contains("checkpoint")) {
+            fetchQuestions();
             modal.style.display = "block";
         }
       }
@@ -115,6 +124,7 @@ document.addEventListener("keydown", (event) => {
         character.style.left = newCell.offsetLeft + "px";
 
         if (newCell.classList.contains("checkpoint")) {
+            fetchQuestions();
             modal.style.display = "block";
         }
     }
@@ -127,6 +137,6 @@ checkp.addEventListener("submit", (event) => {
 
     const selectedValue = document.querySelector('input[name="question"]:checked').value;
     console.log(selectedValue)
-
-
 });
+
+
