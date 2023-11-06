@@ -22,18 +22,24 @@ document.addEventListener("DOMContentLoaded", function () {
           // Add class
           cell.classList.add("w");
         }
+
+        if(cell.id === "112"){
+          cell.classList.add("checkpoint1")
+          cell.style.backgroundColor = "green"
+          cell.style.borderRadius = "50px"
+        }
+
       }
     }
 
     // Add a class "start" to the cell with ID 168
     const startCell = document.getElementById("168");
-    startCell.classList.add("start");
 
     // Position the character at the start cell (cell ID 168)
     const character = document.getElementById("character");
-    // const startCellElement = document.querySelector(".start");
     character.style.top = startCell.offsetTop + "px";
     character.style.left = startCell.offsetLeft + "px";
+      
 });
 
 document.addEventListener("keydown", (event) => {
