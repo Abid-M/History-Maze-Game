@@ -38,10 +38,10 @@ body {
   }
   
   #character {
-    width: 35px;
-    height: 35px;
-    background-color: red;
-    background-image: url("./med_icon.png");
+    width: 40px;
+    height: 40px;
+    background: url("./med_icon.png");
+    background-size: cover;
     position: absolute;
   }
 
