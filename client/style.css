@@ -1,3 +1,8 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 body {
     text-align: center;
   }
@@ -28,8 +33,8 @@ body {
   }
   
   #character {
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
     background-color: red;
     position: absolute;
   }
