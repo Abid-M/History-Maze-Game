@@ -43,20 +43,7 @@ body {
     background: url("./med_icon.png");
     background-size: cover;
     position: absolute;
-  }
-
-  /* Define the style for the "dot" class */
- .dot {
-    background-color: green; /* Green background color for the dot */
-    width: 10px; /* Set the width of the dot */
-    height: 10px; /* Set the height of the dot */
-    border-radius: 50%; /* Make it a circle */
-    position: absolute;
-    top: 50%; /* Position the dot in the center vertically */
-    left: 50%; /* Position the dot in the center horizontally */
-    transform: translate(-50%, -50%); /* Center the dot within its parent cell */
-  }
-  
+  }  
 
   /* LANDING PAGE */
   .lp {
