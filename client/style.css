@@ -5,7 +5,7 @@
   }
 body {
     text-align: center;
-    background-image: url("./background.jpg");
+    background-image: url("./background3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -13,17 +13,17 @@ body {
   .main-box{
     display: flex; 
     flex-direction: column;
+    border-radius: 250px;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    border-style: dotted;
   }
   #maze {
     display: grid;
     grid-template-columns: repeat(13, 50px);
      /* grid-gap: 1px;  */
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.25);
     padding: 10px
   }
   
@@ -41,5 +41,47 @@ body {
     width: 35px;
     height: 35px;
     background-color: red;
+    background-image: url("./med_icon.png");
     position: absolute;
   }
+
+
+
+  /* LANDING PAGE */
+  .lp {
+    background-image: url("https://files.slack.com/files-pri/THYP60S66-F064E3PSSRG/firefly_background_for_a_history_game_merging_medieval_and_industrial_revolution_1606.jpg");
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+    background-color: aquamarine;
+  }
+  h1 {
+    font-size: 5rem;
+    font-family: "Vast Shadow", serif;
+  }
+  
+  h3 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-family: "Work Sans", sans-serif;
+  }
+  .lp p {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .btn {
+    cursor: pointer;
+    /* display: inline-block; */
+    background: none;
+    border: 1px #000 solid;
+    border-radius: 50px;
+    padding: 7px 16px;
+    line-height: 1.5;
+    /* text-align: center; */
+    /* text-decoration: none; */
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  
