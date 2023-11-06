@@ -38,11 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const character = document.getElementById("character");
     character.style.top = startCell.offsetTop + "px";
     character.style.left = startCell.offsetLeft + "px";
-      
 });
 
 document.addEventListener("keydown", (event) => {
     let key = event.key
+    let modal = document.getElementById("myModal");
+
     // up -13, down +13, left -1, right +1
 
     let character = document.getElementById("character")
@@ -51,7 +52,6 @@ document.addEventListener("keydown", (event) => {
 
     if (key === "ArrowUp") {
         let newPosition = currentCell - 13
-
         let newCell = document.getElementById(newPosition)
 
         if (newCell.classList.contains('w')){
@@ -59,14 +59,18 @@ document.addEventListener("keydown", (event) => {
 
             character.style.top = newCell.offsetTop + "px";
             character.style.left = newCell.offsetLeft + "px";
-          
+            
+            if (newCell.className.includes("checkpoint")) {
+                modal.style.display = "block";
+            }
+
             if(newCell.id === "2"){
                 window.alert("YOU WIN!")
                 console.log("win!")
             }
         }
-
     }
+
     else if(key === "ArrowDown"){
       let newPosition = currentCell + 13;
       
@@ -77,8 +81,12 @@ document.addEventListener("keydown", (event) => {
 
         character.style.top = newCell.offsetTop + "px";
         character.style.left = newCell.offsetLeft + "px";
+        if (newCell.classList.contains("checkpoint")) {
+            modal.style.display = "block";
+        }
     }
     }
+
     else if(key === "ArrowLeft"){
       let newPosition = currentCell -1;
       
@@ -89,7 +97,11 @@ document.addEventListener("keydown", (event) => {
 
         character.style.top = newCell.offsetTop + "px";
         character.style.left = newCell.offsetLeft + "px";
-    }
+
+        if (newCell.classList.contains("checkpoint")) {
+            modal.style.display = "block";
+        }
+      }
     }
     else if(key === "ArrowRight"){
       let newPosition = currentCell + 1;
@@ -101,6 +113,20 @@ document.addEventListener("keydown", (event) => {
 
         character.style.top = newCell.offsetTop + "px";
         character.style.left = newCell.offsetLeft + "px";
+
+        if (newCell.classList.contains("checkpoint")) {
+            modal.style.display = "block";
+        }
     }
     }
+});
+
+let checkp = document.querySelector("#checkp")
+checkp.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const selectedValue = document.querySelector('input[name="question"]:checked').value;
+    console.log(selectedValue)
+
+
 });
