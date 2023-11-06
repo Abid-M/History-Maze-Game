@@ -5,6 +5,9 @@
   }
 body {
     text-align: center;
+    background-image: url("./background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   
   .main-box{
@@ -18,8 +21,10 @@ body {
   #maze {
     display: grid;
     grid-template-columns: repeat(13, 50px);
-     grid-gap: 1px; 
+     /* grid-gap: 1px;  */
     justify-content: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px
   }
   
   .cell {
@@ -29,7 +34,7 @@ body {
   }
   
   .w {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.25);
   }
   
   #character {
