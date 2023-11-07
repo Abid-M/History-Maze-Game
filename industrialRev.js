@@ -36,3 +36,6 @@ const industrialQs = [
   ]
 },
 ]
+
+
+module.exports = industrialQs

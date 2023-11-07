@@ -17,7 +17,7 @@ app.listen(port, () => {
 })
 
 app.get('/', (req, res) => {
-    res.send(`Welcome to team 3 project!`);
+    res.send(`Welcome to team 2 project!`);
 })
 
 app.get('/medieval', (req, res) => {
@@ -29,11 +29,11 @@ app.get('/random/medieval', (req, res) => {
     res.status(200).send(medievalQs[randomQ])
 })
 
-app.get("/industrialrevolution", (req,res)=>{
+app.get("/industrialRev", (req, res)=>{
     res.status(200).send(industrialQs)
 })
 
-app.get("/random/industrialrevolution", (req,res)=>{
+app.get("/random/industrialRev", (req,res)=>{
     const randomQ = Math.floor(Math.random()*industrialQs.length)
     res.status(200).send(industrialQs[randomQ])
 })
