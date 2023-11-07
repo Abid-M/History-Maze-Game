@@ -158,18 +158,35 @@ function checkAnswer(data) {
         correctAnswer = data.answers[i].text
       }
     }
+    const successMessageElement = document.getElementById("successMessage");
+    const wrongMessageElement = document.getElementById("wrongMessage");
     
+    successMessageElement.textContent = "";
+    wrongMessageElement.textContent = "";
+
     if (correctAnswer === selectedValue) {
-      alert("success")
-      modal.style.display = "none";
-    } else {        
-      alert(`wrong, the correct answer is ${correctAnswer}`)
-      fetchQuestions();
-    } 
-  }
+      successMessageElement.textContent = `Well Done! You got it right!`;
+
+      let checkpoints = document.getElementById("userCheckpoints");
+      
+      setTimeout(function() {
+        successMessageElement.textContent = ''; 
+        modal.style.display = "none";
+        checkpoints.textContent = checkpoints.textContent - 1
+      }, 3000);
+
+    } else {       
+        wrongMessageElement.textContent = `You got it Wrong!\nCorrect Answer: ${correctAnswer}!\nTry a different question!`;
+
+      
+      setTimeout(function() {
+        wrongMessageElement.textContent = ''; 
+        fetchQuestions()
+      }, 4000);
+  }   }
 )};
 
-module.exports = { checkAnswer }
+module.exports = { checkAnswer, fetchQuestions }
 
 
 

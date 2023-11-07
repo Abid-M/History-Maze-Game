@@ -1,11 +1,38 @@
-// functions to test: 
-// fetchQuestions
-// Check Answer
-// 
+/**
+ * @jest-environment jsdom
+ */
 
 
 
-//const { checkAnswer } = require('./script')
+const { checkAnswer, fetchQuestions } = require('./script')
+
+
+describe("checkAnswer", ()=>{
+
+  test("exists", ()=>{
+    expect(checkAnswer).toBeDefined()
+  })
+  test("is a function", ()=>{
+    expect(checkAnswer instanceof Function).toEqual(true)
+  })
+
+
+})
+
+describe("fetchQuestions", ()=>{
+  test("exists", ()=>{
+    expect(fetchQuestions).toBeDefined()
+  })
+  test("is a function", ()=>{
+    expect(fetchQuestions instanceof Function).toEqual(true)
+
+})
+
+})
+
+
+
+
 // const sampleData = {
 //     answers: [
 //         {text: 'Correct Answer', value: 1},
@@ -30,11 +57,4 @@
     
 // });
 
-
-describe("checkAnswer", () => {
-    it("Is a function", () => {
-      expect(countValues).toBeDefined();
-      expect(countValues instanceof Function).toEqual(true);
-    });
-})
 

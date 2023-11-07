@@ -8,6 +8,7 @@ app.use(express.json())
 app.use(logger)
 
 const medievalQs = require('./medieval')
+const industrialQs = require("./industrialRev")
 
 const port = 3000;
 
@@ -26,4 +27,13 @@ app.get('/medieval', (req, res) => {
 app.get('/random/medieval', (req, res) => {
     const randomQ = Math.floor(Math.random()*medievalQs.length)
     res.status(200).send(medievalQs[randomQ])
+})
+
+app.get("/industrialrevolution", (req,res)=>{
+    res.status(200).send(industrialQs)
+})
+
+app.get("/random/industrialrevolution", (req,res)=>{
+    const randomQ = Math.floor(Math.random()*industrialQs.length)
+    res.status(200).send(industrialQs[randomQ])
 })

@@ -4,16 +4,16 @@ const industrialQs = [
       answers: [
           {text: "A war fought with industrial machines", value: 0},
           {text: "A period when many social and cultural changes occurred", value: 0},
-          {text: "A time when industries were shut down", value: 1},
-          {text: "A significant increase in the production of goods due to new machines", value: 0},
+          {text: "A time when industries were shut down", value: 0},
+          {text: "A significant increase in the production of goods due to new machines", value: 1},
       ]
   },
   {
     question: "Which industry was first affected by the Industrial Revolution?",
     answers: [
         {text: "Automobile", value: 0},
-        {text: "Textiles", value: 0},
-        {text: "Steel", value: 1},
+        {text: "Textiles", value: 1},
+        {text: "Steel", value: 0},
         {text: "Agriculture", value: 0},
     ]
 },
