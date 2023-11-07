@@ -44,7 +44,7 @@ print("hello")
 1. Item 1
     2. Item 1a
 
-### Bugs
+# Bugs
 * Users can still move characters even with the modal question is shown
 
 
