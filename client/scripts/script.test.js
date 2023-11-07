@@ -2,9 +2,7 @@
  * @jest-environment jsdom
  */
 
-
-
-const { checkAnswer, fetchQuestions } = require('./script')
+const { checkAnswer, fetchQuestions } = require('./scripts/script')
 
 const sampleData = {
   answers: [
@@ -17,27 +15,25 @@ const sampleData = {
 
 
 describe("checkAnswer", ()=>{
-  afterEach(() => {
-    jest.restoreAllMocks();
-  })
 
-  test("exists", ()=>{
+  it("exists", ()=>{
     expect(checkAnswer).toBeDefined()
   })
-  test("is a function", ()=>{
+  it("is a function", ()=>{
     expect(checkAnswer instanceof Function).toEqual(true)
   })
-  xtest('Correct Answer', ()=> {
+  /*it('Displays if there is a Correct Answer', ()=> {
     const parser = DOMParser();
     jest.spyOn(document, 'querySelector').mockImplementation(selector => dom.querySelector(selector))
       checkAnswer(sampleData);
       document.querySelector('#option1').click();
-      expect(alert).toHaveBeenCalledWith('success');
+      expect(alert).toHaveBeenCalledWith('success');*/
   });
+  
   
 
 
-})
+
 
 describe("fetchQuestions", ()=>{
   test("exists", ()=>{

@@ -1,6 +1,6 @@
  /* LANDING PAGE */
  body {
-  background-image: url("./lp-back.jpg");
+  background-image: url("../images/landingBackground.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
@@ -40,7 +40,7 @@
   }
   h4 {
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin: 20px 0;
     
   }
   .category{
