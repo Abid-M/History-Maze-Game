@@ -11,11 +11,30 @@
 // });
 
 
-// // Start btn function
+// // Start btn function // CALLING HTML FILE ver
   const gameStartBtn = document.getElementById("gameStartBtn");
+  const medievalRadio = document.getElementById("medieval")
   
     
     gameStartBtn.addEventListener("click", function () {
-        console.log("hi"); 
-        window.location.href = "maze.html"; 
-    });
+
+if(medievalRadio.checked){
+    window.location.href = "maze.html"; 
+} else{
+    console.log("other html")
+//we might need to have a variable in script.js so then if its medieval then we can change the api url too Erica 
+// gocha !
+} });
+
+
+
+
+// // CALLING API ver
+
+// const callApiBtn = document.getElementById("callApiBtn");
+
+// callApiBtn.addEventListener("click",function(){
+
+
+// })
+

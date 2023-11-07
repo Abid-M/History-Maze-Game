@@ -10,7 +10,7 @@
   <body>
     <section class="main-box">
         <div style="background-color: rgba(255, 255, 255, 0.5); padding: 20px">
-            <h3>Checkpoints Remaining: <span id="userCheckpoints">4</span>/4</h3>
+            <!-- <h3>Checkpoints Remaining: <span id="userCheckpoints">4</span>/4</h3> -->
             <u><h1>Time Labyrinth</h1></u>
             <h2>An adventure maze game</h2>
             <div id="maze"></div>
@@ -25,10 +25,17 @@
     <div class="checkpoint3"></div>
     <div class="checkpoint4"></div>
 
+    
+    <div id="endModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1 id="endMessage"></h1>
+      </div>
+    </div>
+
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <!-- <span class="close">&times;</span> -->
           <h1 id="successMessage" style="color: green; background-color: lightgrey; padding:5px; border-radius: 3px; box-shadow: 100px;"></h1>
           <h1 id="wrongMessage" style="color: red; background-color: lightgrey; padding:5px; border-radius: 3px; box-shadow: 100px;"></h1>
           <br>
@@ -57,7 +64,6 @@
         <button id="submit">Submit</button>
         </div>  
     </div>
-
     </section>
 
   </body>

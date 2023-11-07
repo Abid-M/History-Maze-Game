@@ -1,3 +1,13 @@
+let category; 
+// either medieval or industrialRev
+
+
+let span = document.querySelector(".close");
+let endModal = document.getElementById("endModal");
+span.addEventListener("click", () => {
+  endModal.style.display = "none";
+})
+
 document.addEventListener("DOMContentLoaded", function () {
     const maze = document.getElementById("maze");
     
@@ -10,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
       124, 126, 132, 135, 137, 139, 145, 146, 148, 149, 150, 152, 153, 154, 155,
       168,
     ];
+
+
   
     for (let i = 0; i < 13; i++) {
       for (let j = 0; j < 13; j++) {
@@ -39,10 +51,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const character = document.getElementById("character");
     character.style.top = startCell.offsetTop + "px";
     character.style.left = startCell.offsetLeft + "px";
+
+    const urlParams = new URLSearchParams(window.location.search);
+    category = urlParams.get('era'); // 'medieval' or 'industrialRev' ******added new trial **** Matthew's edit 
+
+    if(category){
+      fetchQuestions();//***** added new-trial */ **** Matthew's edit 
+    }
 });
 
 async function fetchQuestions() {
-    const response = await fetch ("https://history-game-info.onrender.com/random/industrialrevolution")
+
+
+    let apiUrl = `https://history-game-info.onrender.com/random/${category}`; // Use the 'category' variable to change the endpoint **** Matthew's edit 
+    // const response = await fetch(apiUrl); **** Matthew's edit 
+    // const data = await response.json(); **** Matthew's edit 
+
+    
+    const response = await fetch ("https://history-game-info.onrender.com/random/medieval")
     const data = await response.json()
 
     for(let i =0; i<4; i++){
@@ -81,16 +107,37 @@ document.addEventListener("keydown", (event) => {
             character.style.left = newCell.offsetLeft + "px";
             
             if (newCell.className.includes("checkpoint")) {
+                fetchQuestions();
                 modal.style.display = "block";
             }
 
             if(newCell.id === "2"){
-              if(document.getElementById("userCheckpoints").textContent == 0){
-                window.alert("YOU WIN!")
-                console.log("win!")}
-                else{
-                  window.alert("YOU NEED TO COMPLETE ALL THE CHECKPOINTS")
+              console.log("runnign this console log")
+              let path = document.querySelectorAll(".w")
+              console.log(path)
+
+              for (let i =0; i < path.length; i++) {
+                if (path[i].classList.contains("checkpoint")) {
+                  let endModal = document.getElementById("endModal")
+
+                  document.getElementById("endMessage").textContent = "You need to complete all the Checkpoints in order to finish!"
+                  document.getElementById("endMessage").style.color = "red";
+
+                  endModal.style.display = "block"
+                  break;
+                } else {
+                  let endModal = document.getElementById("endModal")
+
+                  document.getElementById("endMessage").textContent = "You win, thanks for playing!"
+                  document.getElementById("endMessage").style.color = "green"
+
+                
+                  endModal.style.display = "block"
+
+                  console.log("You WIN!")
+
                 }
+              }
             }
         }
     }
@@ -106,6 +153,7 @@ document.addEventListener("keydown", (event) => {
         character.style.top = newCell.offsetTop + "px";
         character.style.left = newCell.offsetLeft + "px";
         if (newCell.classList.contains("checkpoint")) {
+            fetchQuestions();
             modal.style.display = "block";
         }
     }
@@ -172,13 +220,19 @@ function checkAnswer(data) {
     if (correctAnswer === selectedValue) {
       let userChecks = document.getElementById("userCheckpoints")
       successMessageElement.textContent = `Well Done! You got it right!`;
+     
+
+
 
       setTimeout(function() {
         successMessageElement.textContent = '';
-        modal.style.display = "none";
-          userChecks.textContent = userChecks.textContent - 1;
-          console.log("checks: ", userChecks.textContent)
-          
+        modal.style.display = "none";       
+        
+        let currentCellID = parseInt(character.parentElement.id);
+        let currentCell = document.getElementById(currentCellID)
+        currentCell.classList.remove("checkpoint")
+        currentCell.style.backgroundColor = "";
+        currentCell.style.borderRadius = "";
       }, 1000);
     } else if (correctAnswer !== selectedValue){
       wrongMessageElement.textContent = `You got it Wrong!\nCorrect Answer: ${correctAnswer}!\nTry a different question!`;
@@ -195,7 +249,6 @@ function checkAnswer(data) {
     }
   });
 }
-
 
 module.exports = { checkAnswer, fetchQuestions }
 

@@ -1,11 +1,12 @@
  /* LANDING PAGE */
  .lp {
-    background-image: url("./asd.jpg");
+    background-image: url("./lp-back.jpg");
     flex-direction: column;
     justify-content: center;
     display: flex;
     height: 100vh;
     text-align: center;
+    color: white;
     
   }
 
@@ -20,16 +21,15 @@
 
 
   h1 {
-    font-size: 4rem;
+    font-size: 7rem;
     font-family: 'New Rocker', cursive;
-    color: white;
     text-shadow: 2px 4px 3px #000000;
+    margin-bottom: 30px;
   }
   
-  h3 {
+  h3 { 
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: white;
     text-shadow: 2px 4px 3px #000000;
     font-family: "Work Sans", sans-serif;
   }
