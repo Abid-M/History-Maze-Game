@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const maze = document.getElementById("maze");
+    
   
     // Array of cell IDs that should be white
     const cellIds = [
@@ -56,7 +57,6 @@ async function fetchQuestions() {
       let question = document.getElementById("question")
       question.textContent = data.question
     }
-    
     checkAnswer(data)
 }
 
@@ -144,9 +144,8 @@ document.addEventListener("keydown", (event) => {
 });
 
 
-
 function checkAnswer(data) {
-  let checkp = document.querySelector("#submit")
+  let checkp = document.querySelector("#submit");
   let modal = document.getElementById("myModal");
 
   checkp.addEventListener("click", () => {
@@ -155,36 +154,43 @@ function checkAnswer(data) {
 
     for (let i = 0; i < 4; i++) {
       if (data.answers[i].value == 1) {
-        correctAnswer = data.answers[i].text
+        correctAnswer = data.answers[i].text;
       }
     }
+
     const successMessageElement = document.getElementById("successMessage");
     const wrongMessageElement = document.getElementById("wrongMessage");
-    
+
     successMessageElement.textContent = "";
     wrongMessageElement.textContent = "";
 
     if (correctAnswer === selectedValue) {
+      let userChecks = document.getElementById("userCheckpoints")
       successMessageElement.textContent = `Well Done! You got it right!`;
-
-      let checkpoints = document.getElementById("userCheckpoints");
       
+
       setTimeout(function() {
-        successMessageElement.textContent = ''; 
+        successMessageElement.textContent = '';
         modal.style.display = "none";
-        checkpoints.textContent = checkpoints.textContent - 1
-      }, 3000);
+          userChecks.textContent = userChecks.textContent - 1;
+          console.log("checks: ", userChecks.textContent)
+      }, 1000);
+    } else if (correctAnswer !== selectedValue){
+      wrongMessageElement.textContent = `You got it Wrong!\nCorrect Answer: ${correctAnswer}!\nTry a different question!`;
 
-    } else {       
-        wrongMessageElement.textContent = `You got it Wrong!\nCorrect Answer: ${correctAnswer}!\nTry a different question!`;
-
-      
       setTimeout(function() {
-        wrongMessageElement.textContent = ''; 
-        fetchQuestions()
-      }, 4000);
-  }   }
-)};
+        wrongMessageElement.textContent = '';
+        fetchQuestions();
+      }, 1000);
+    }
+    else{
+      successMessageElement.textContent = ""
+      wrongMessageElement.textContent = ""
+
+    }
+  });
+}
+
 
 module.exports = { checkAnswer, fetchQuestions }
 
