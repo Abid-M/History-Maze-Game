@@ -8,8 +8,13 @@ span.addEventListener("click", () => {
   endModal.style.display = "none";
 })
 
+    let startModal = document.getElementById("startModal");
+
 document.addEventListener("DOMContentLoaded", function () {
     category = localStorage.getItem("selectedTheme")
+
+
+    startModal.display = "block"
 
     if (category === "medieval") {
       document.getElementById("categorySelected").textContent = `Category Selected: Medieval`
@@ -50,12 +55,19 @@ document.addEventListener("DOMContentLoaded", function () {
           // Add class
           cell.classList.add("w");
         }
+        if(cell.id === "2"){
+          cell.style.backgroundColor = "gold"
+        }
 
         if(cell.id === "112" || cell.id === "121" || cell.id === "62" || cell.id === "17"){
-          cell.classList.add("checkpoint")
-          cell.style.backgroundColor = "green"
-          cell.style.borderRadius = "50px"
+          cell.classList.add("checkpoint");
+          cell.style.backgroundImage = "url('./images/chest.png')";
+          cell.style.backgroundSize = "contain";  // This ensures that the image fits into the cell.
+          cell.style.backgroundRepeat = "no-repeat";  // This ensures the image does not tile.
+          cell.style.backgroundPosition = "center";  // This centers the image in the cell.
+          cell.style.borderRadius = "50px";  // You can adjust or remove this as needed.
         }
+        
       }
     }
 
@@ -124,8 +136,9 @@ document.addEventListener("keydown", (event) => {
                 if (path[i].classList.contains("checkpoint")) {
                   let endModal = document.getElementById("endModal")
 
-                  document.getElementById("endMessage").textContent = "You need to complete all the Checkpoints in order to finish!"
-                  document.getElementById("endMessage").style.color = "red";
+                  document.getElementById("endMessage").textContent = 
+                  "You need to complete all the Checkpoints in order to finish!"
+                  // document.getElementById("endMessage").style.color = "red";
 
                   endModal.style.display = "block"
                   break;
@@ -134,6 +147,12 @@ document.addEventListener("keydown", (event) => {
 
                   document.getElementById("endMessage").textContent = "You win, thanks for playing!"
                   document.getElementById("endMessage").style.color = "green"
+
+                  backToHomepageButton = document.getElementById("BackToHomepage")
+
+                  backToHomepageButton.addEventListener("click", ()=>{
+                    window.location.href = "index.html"
+                  } )
 
                 
                   endModal.style.display = "block"
@@ -224,9 +243,6 @@ function checkAnswer(data) {
     if (correctAnswer === selectedValue) {
       let userChecks = document.getElementById("userCheckpoints")
       successMessageElement.textContent = `Well Done! You got it right!`;
-     
-
-
 
       setTimeout(function() {
         successMessageElement.textContent = '';
@@ -237,14 +253,18 @@ function checkAnswer(data) {
         currentCell.classList.remove("checkpoint")
         currentCell.style.backgroundColor = "";
         currentCell.style.borderRadius = "";
-      }, 1000);
+      }, 3000);
     } else if (correctAnswer !== selectedValue){
-      wrongMessageElement.textContent = `You got it Wrong!\nCorrect Answer: ${correctAnswer}!\nTry a different question!`;
+
+
+
+
+    wrongMessageElement.textContent = `You got it Wrong!\nCorrect Answer: ${correctAnswer}!\nTry a different question!`;
 
       setTimeout(function() {
         wrongMessageElement.textContent = '';
         fetchQuestions();
-      }, 1000);
+      }, 3000);
     }
     else{
       successMessageElement.textContent = ""

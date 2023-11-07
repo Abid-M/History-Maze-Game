@@ -26,19 +26,39 @@
     <div class="checkpoint3"></div>
     <div class="checkpoint4"></div>
 
+    <div id = "startModal" class ="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class = "instructions">
+        <p>How to Play:</p>
+        <br>
+        <ul>
+          <li>Use the Up, Down, Left and Right Arrow keys to move your character.</li>
+          <li>When you come across a checkpoint, you must answer a question.</li>
+          <li>You cannot move past a checkpoint until you answer a question correctly.</li>
+          <li>You must pass all checkpoints before you can escape the maze!</li>
+
+        </ul>
+        </div>
+      </div>
+    </div>
     
     <div id="endModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <h1 id="endMessage"></h1>
+        <button type="submit" class="btn" id="BackToHomepage"> Back to Homepage</button>
       </div>
     </div>
 
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-          <h1 id="successMessage" style="color: green; background-color: lightgrey; padding:5px; border-radius: 3px; box-shadow: 100px;"></h1>
-          <h1 id="wrongMessage" style="color: red; background-color: lightgrey; padding:5px; border-radius: 3px; box-shadow: 100px;"></h1>
+          <h1 id="successMessage" ></h1>
+          <h1 id="wrongMessage" ></h1>
+          <!-- LET ME COMMENT OUT FOR NOW -erica  -->
+          <!-- <h1 id="successMessage" style="color: green; background-color: lightgrey; padding:5px; border-radius: 3px; box-shadow: 100px;"></h1>
+          <h1 id="wrongMessage" style="color: red; background-color: lightgrey; padding:5px; border-radius: 3px; box-shadow: 100px;"></h1> -->
           <br>
 
           <b><h3>Checkpoint!</p></h3>

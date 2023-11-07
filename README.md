@@ -46,6 +46,7 @@ print("hello")
 
 # Bugs
 * Users can still move characters even with the modal question is shown
+* Resizing browser screen, moves the character icon
 
 
 ## Future Features
