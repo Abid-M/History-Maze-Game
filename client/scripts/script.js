@@ -219,6 +219,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+//erica add
 function checkAnswer(data) {
   let checkp = document.querySelector("#submit");
   let modal = document.getElementById("myModal");
@@ -260,12 +261,15 @@ function checkAnswer(data) {
         currentCell.style.backgroundColor = "";
         currentCell.style.borderRadius = "";
       }, 3000);
-    } else {
+    } else if (correctAnswer !== selectedValue) {
       wrongMessageElement.style.display = "block";
       setTimeout(function () {
         wrongMessageElement.style.display = "none";
         fetchQuestions();
       }, 3000);
+    } else {
+      successMessageElement.textContent = "";
+      wrongMessageElement.textContent = "";
     }
   });
 }
