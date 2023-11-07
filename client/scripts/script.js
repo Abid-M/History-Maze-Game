@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (category === "industrialRev") {
       document.getElementById("categorySelected").textContent = `Category Selected: Industrial Revolution`
       document.body.style.backgroundImage = 'url("./images/industrialBackground.jpg")';
+      document.getElementById("character").style.background = 'url("./images/ind_icon.png")'
+      document.getElementById("character").style.backgroundSize = "cover";
     } else {
       document.getElementById("categorySelected").textContent = `No Category Selected!`
       window.location.href = "index.html";
