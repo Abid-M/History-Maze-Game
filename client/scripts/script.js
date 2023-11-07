@@ -252,9 +252,11 @@ function checkAnswer(data) {
 
     if (correctAnswer === selectedValue) {
       successMessageElement.style.display = "block";
+
       setTimeout(function () {
         successMessageElement.style.display = "none";
         modal.style.display = "none";
+
         let currentCellID = parseInt(character.parentElement.id);
         let currentCell = document.getElementById(currentCellID);
         currentCell.classList.remove("checkpoint");
@@ -263,6 +265,7 @@ function checkAnswer(data) {
       }, 3000);
     } else if (correctAnswer !== selectedValue) {
       wrongMessageElement.style.display = "block";
+
       setTimeout(function () {
         wrongMessageElement.style.display = "none";
         fetchQuestions();
