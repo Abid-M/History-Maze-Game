@@ -4,7 +4,8 @@
 // 
 
 
-// const { checkAnswer } = require('./script')
+
+//const { checkAnswer } = require('./script')
 // const sampleData = {
 //     answers: [
 //         {text: 'Correct Answer', value: 1},
