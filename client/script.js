@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function fetchQuestions() {
-    const response = await fetch ("https://history-game-info.onrender.com/random/medieval")
+    const response = await fetch ("https://history-game-info.onrender.com/random/industrialrevolution")
     const data = await response.json()
 
     for(let i =0; i<4; i++){
@@ -85,8 +85,12 @@ document.addEventListener("keydown", (event) => {
             }
 
             if(newCell.id === "2"){
+              if(document.getElementById("userCheckpoints").textContent == 0){
                 window.alert("YOU WIN!")
-                console.log("win!")
+                console.log("win!")}
+                else{
+                  window.alert("YOU NEED TO COMPLETE ALL THE CHECKPOINTS")
+                }
             }
         }
     }
@@ -144,6 +148,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 
+
 function checkAnswer(data) {
   let checkp = document.querySelector("#submit");
   let modal = document.getElementById("myModal");
@@ -167,13 +172,13 @@ function checkAnswer(data) {
     if (correctAnswer === selectedValue) {
       let userChecks = document.getElementById("userCheckpoints")
       successMessageElement.textContent = `Well Done! You got it right!`;
-      
 
       setTimeout(function() {
         successMessageElement.textContent = '';
         modal.style.display = "none";
           userChecks.textContent = userChecks.textContent - 1;
           console.log("checks: ", userChecks.textContent)
+          
       }, 1000);
     } else if (correctAnswer !== selectedValue){
       wrongMessageElement.textContent = `You got it Wrong!\nCorrect Answer: ${correctAnswer}!\nTry a different question!`;
@@ -193,6 +198,5 @@ function checkAnswer(data) {
 
 
 module.exports = { checkAnswer, fetchQuestions }
-
 
 

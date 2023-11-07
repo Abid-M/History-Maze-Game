@@ -1,16 +1,11 @@
-// function clickStart(event) {
-//   // Prevent the default mouse event behavior if necessary
-//   event.preventDefault();
 
-//   // Go to the next page
-//   window.location.href = "maze.html";
-// }
+// Start btn function
+document.addEventListener('DOMContentLoaded', (event) => {
+  const gameStartBtn = document.getElementById("gameStartBtn");
 
-const gameStartBtn = document.getElementById("gameStartBtn");
-
-gameStartBtn.addEventListener("click",function(){
-
-    console.log("hi")
-window.location.href ="maze.html"
-    
-})
+  // Add click event listener to the button
+  gameStartBtn.addEventListener("click", function () {
+      console.log("hi"); 
+      window.location.href = "maze.html"; 
+  });
+});
