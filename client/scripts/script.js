@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("categorySelected").textContent = `Category Selected: Medieval`
     } else if (category === "industrialRev") {
       document.getElementById("categorySelected").textContent = `Category Selected: Industrial Revolution`
+      document.body.style.backgroundImage = 'url("./images/industrialBackground.jpg")';
     } else {
       document.getElementById("categorySelected").textContent = `No Category Selected!`
       window.location.href = "index.html";

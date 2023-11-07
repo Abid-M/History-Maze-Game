@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const { checkAnswer, fetchQuestions } = require('./scripts/script')
+const { checkAnswer, fetchQuestions } = require('./script')
 
 const sampleData = {
   answers: [

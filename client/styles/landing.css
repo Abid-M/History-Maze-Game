@@ -3,7 +3,7 @@
   background-image: url("../images/landingBackground.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden;
+  /* overflow: hidden; */
  }
 
  .lp {
@@ -26,7 +26,7 @@
 
 
   h1 {
-    font-size: 7rem;
+    font-size: 6rem;
     font-family: 'New Rocker', cursive;
     text-shadow: 2px 4px 3px #000000;
     margin-bottom: 30px;

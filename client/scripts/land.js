@@ -9,7 +9,7 @@ gameStartBtn.addEventListener("click", function () {
     window.location.href = "maze.html";
   } else if (industrialRadio.checked) {
     localStorage.setItem("selectedTheme", "industrialRev");
-    window.location.href = "maze.html";
+    window.location.href = "./maze.html";
   }
 });
 
