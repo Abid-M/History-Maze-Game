@@ -1,32 +1,34 @@
 
-
-// document.addEventListener('DOMContentLoaded', (event) => {
-//   const gameStartBtn = document.getElementById("gameStartBtn");
-
-//   // Add click event listener to the button
-//   gameStartBtn.addEventListener("click", function () {
-//       console.log("hi"); 
-//       window.location.href = "maze.html"; 
-//   });
-// });
-
-
 // // Start btn function // CALLING HTML FILE ver
-  const gameStartBtn = document.getElementById("gameStartBtn");
-  const medievalRadio = document.getElementById("medieval")
+//   const gameStartBtn = document.getElementById("gameStartBtn");
+//   const medievalRadio = document.getElementById("medieval")
+//   const industrialRadio = document.getElementById("industrial")
+
   
     
-    gameStartBtn.addEventListener("click", function () {
+//     gameStartBtn.addEventListener("click", function () {
 
-if(medievalRadio.checked){
-    window.location.href = "maze.html"; 
-} else{
-    console.log("other html")
-//we might need to have a variable in script.js so then if its medieval then we can change the api url too Erica 
-// gocha !
-} });
+// if(medievalRadio.checked){
+//     console.log("medieval")
+//     window.location.href = "maze.html"; 
+// } else if (industrialRadio.checked){
+//   console.log("industrial")
+//   window.location.href = "maze.html"; 
+// }});
 
+const gameStartBtn = document.getElementById("gameStartBtn");
+const medievalRadio = document.getElementById("medieval");
+const industrialRadio = document.getElementById("industrial");
 
+gameStartBtn.addEventListener("click", function () {
+  if (medievalRadio.checked) {
+    localStorage.setItem("selectedTheme", "medieval");
+    window.location.href = "maze.html";
+  } else if (industrialRadio.checked) {
+    localStorage.setItem("selectedTheme", "industrialRev");
+    window.location.href = "maze.html";
+  }
+});
 
 
 // // CALLING API ver
@@ -37,4 +39,8 @@ if(medievalRadio.checked){
 
 
 // })
+
+
+//let category;
+// either medieval or industrialRev
 

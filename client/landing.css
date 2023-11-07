@@ -1,6 +1,12 @@
  /* LANDING PAGE */
+ body {
+  background-image: url("./lp-back.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+ }
+
  .lp {
-    background-image: url("./lp-back.jpg");
     flex-direction: column;
     justify-content: center;
     display: flex;
@@ -8,15 +14,14 @@
     text-align: center;
     color: white;
     
-  }
-
-  /* .back-blur {
+ }
+   .back-blur {
     background-color: #00000021;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(7px);
     padding: 10px;
     margin: 0 30px;
     border-radius: 20px;
-  } */
+  } 
 
 
 
@@ -35,7 +40,8 @@
   }
   h4 {
     font-size: 2rem;
-    font-family: "Vast Shadow", serif;
+    margin-bottom: 20px;
+    
   }
   .categoryList {
     line-height: 2.5;
@@ -44,6 +50,8 @@
   .lp p {
     width: 50%;
     margin: 30px auto;
+
+font-family: 'Prompt', sans-serif;
   }
   .btn {
     cursor: pointer;

@@ -9,6 +9,18 @@ span.addEventListener("click", () => {
 })
 
 document.addEventListener("DOMContentLoaded", function () {
+    category = localStorage.getItem("selectedTheme")
+
+    if (category === "medieval") {
+      document.getElementById("categorySelected").textContent = `Category Selected: Medieval`
+    } else if (category === "industrialRev") {
+      document.getElementById("categorySelected").textContent = `Category Selected: Industrial Revolution`
+    } else {
+      document.getElementById("categorySelected").textContent = `No Category Selected!`
+      window.location.href = "index.html";
+    }
+
+
     const maze = document.getElementById("maze");
     
   
@@ -52,23 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
     character.style.top = startCell.offsetTop + "px";
     character.style.left = startCell.offsetLeft + "px";
 
-    const urlParams = new URLSearchParams(window.location.search);
-    category = urlParams.get('era'); // 'medieval' or 'industrialRev' ******added new trial **** Matthew's edit 
-
-    if(category){
-      fetchQuestions();//***** added new-trial */ **** Matthew's edit 
-    }
 });
 
 async function fetchQuestions() {
 
-
-    let apiUrl = `https://history-game-info.onrender.com/random/${category}`; // Use the 'category' variable to change the endpoint **** Matthew's edit 
-    // const response = await fetch(apiUrl); **** Matthew's edit 
-    // const data = await response.json(); **** Matthew's edit 
-
     
-    const response = await fetch ("https://history-game-info.onrender.com/random/medieval")
+    const response = await fetch (`https://history-game-info.onrender.com/random/${category}`)
     const data = await response.json()
 
     for(let i =0; i<4; i++){
