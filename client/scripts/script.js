@@ -8,13 +8,21 @@ span.addEventListener("click", () => {
   endModal.style.display = "none";
 })
 
-    let startModal = document.getElementById("startModal");
+let startModal = document.getElementById("startModal");
+//let closebutton  = document.getElementsByClassName("close")
+let closebutton  = document.getElementById("instructions-close")
+
+closebutton.addEventListener("click", ()=>{
+  startModal.style.display = "none"
+})
 
 document.addEventListener("DOMContentLoaded", function () {
     category = localStorage.getItem("selectedTheme")
 
 
-    startModal.display = "block"
+    startModal.style.display = "block"
+
+    
 
     if (category === "medieval") {
       document.getElementById("categorySelected").textContent = `Category Selected: Medieval`
