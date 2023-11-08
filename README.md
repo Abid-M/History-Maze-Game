@@ -23,6 +23,8 @@
 * __HTML, CSS, and JavaScript:__ *The game is built using a combination of web technologies, making it accessible on a wide range of devices.*
 
 * __ExpressJS and NodeJS:__ *The backend technology stack provides for data storage and api requests.*
+## Preview
+![ezgif com-resize](https://github.com/Abid-M/Lap1Proj/assets/77882906/677ccab0-41d9-42ae-a326-b784e9119974)
 
 ## Wins & Challenges
 ### Wins 
