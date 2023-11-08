@@ -16,16 +16,13 @@
 ### Usage
 * Open the terminal
 * Install the dependencies using `npm install`
-* cd into the client folder `cd client`
-* Run `node index.js` on the command line
+* Run `node index.js` on the command line to run the server
+* Open HTML with LiveServer
 
 ## Technologies
 * __HTML, CSS, and JavaScript:__ *The game is built using a combination of web technologies, making it accessible on a wide range of devices.*
 
 * __ExpressJS and NodeJS:__ *The backend technology stack provides for data storage and api requests.*
-
-
-## Process
 
 ## Wins & Challenges
 ### Wins 
@@ -95,7 +92,6 @@ else if (key === "ArrowDown") {
 
 
 ## Bugs
-* Users can still move characters even with the modal question is shown
 * Resizing browser screen, moves the character icon
 
 

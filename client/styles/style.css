@@ -16,7 +16,8 @@ body {
 .main-box {
   display: flex;
   flex-direction: column;
-  border-radius: 20%;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 5px #000;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -69,7 +70,7 @@ body {
 /* Modal Content */
 .modal-content {
   font-size: 20px;
-  background-color: #fefefe;
+  background-color: antiquewhite; /*modal content updated to be more readable */ 
   margin: 30px auto;
   padding: 20px;
   border: 1px solid #888;
@@ -101,14 +102,23 @@ body {
 .modal-content h3 {
   color: #ff5722;
 }
+
+/* #endMEssage h1{
+  margin-bottom: 32px;
+  color: red;
+}
+
 #endMEssage{
   margin-bottom: 32px;
-}
+} */
+
+
 #BackToHomepage{
   
   padding: 10px;
   font-size: 20px;
   margin-bottom: 16px;
+  margin-top: 30px;
 }
 
 
@@ -139,25 +149,29 @@ body {
 }
 
 
-
-input[type=radio] {
+/* radio button styling in the MCQ checkpoint modal */
+#checkp > input[type=radio] {
    display:none;
 }
 
-input[type=radio] + label {
+ #checkp > label {
    display: inline-block;
    border: 1px solid black;
-   padding: 10px;
-   margin-right: 10px;
+   border-radius:10%;
    color: black;
    background-color: antiquewhite;
 }
 
-input[type=radio]:checked + label {
+  #checkp > label + input[type=radio]:checked {
    background-color: rgb(243, 220, 189);
    color: #000;
    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5)
 }
+
+#checkp > label:hover{
+  background-color: rgb(248, 231, 208);
+}
+
 
 
 

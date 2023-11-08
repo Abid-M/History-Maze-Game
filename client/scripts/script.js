@@ -78,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
         cell.style.backgroundSize = "contain"; // This ensures that the image fits into the cell.
         cell.style.backgroundRepeat = "no-repeat"; // This ensures the image does not tile.
         cell.style.backgroundPosition = "center"; // This centers the image in the cell.
-        // cell.style.borderRadius = "50px"; // You can adjust or remove this as needed.
       }
     }
   }
@@ -123,97 +122,103 @@ document.addEventListener("keydown", (event) => {
   console.log(currentCell);
 
   if (key === "ArrowUp") {
-    let newPosition = currentCell - 13;
-    let newCell = document.getElementById(newPosition);
+    if (modal.style.display !== "block") {
+      let newPosition = currentCell - 13;
+      let newCell = document.getElementById(newPosition);
 
-    if (newCell.classList.contains("w")) {
-      newCell.appendChild(character);
+      if (newCell.classList.contains("w")) {
+        newCell.appendChild(character);
 
-      character.style.top = newCell.offsetTop + "px";
-      character.style.left = newCell.offsetLeft + "px";
+        character.style.top = newCell.offsetTop + "px";
+        character.style.left = newCell.offsetLeft + "px";
 
-      if (newCell.className.includes("checkpoint")) {
-        fetchQuestions();
-        modal.style.display = "block";
-      }
+        if (newCell.className.includes("checkpoint")) {
+          fetchQuestions();
+          modal.style.display = "block";
+        }
 
-      if (newCell.id === "2") {
-        console.log("runnign this console log");
-        let path = document.querySelectorAll(".w");
-        console.log(path);
+        if (newCell.id === "2") {
+          let path = document.querySelectorAll(".w");
+          console.log(path);
 
-        for (let i = 0; i < path.length; i++) {
-          if (path[i].classList.contains("checkpoint")) {
-            let endModal = document.getElementById("endModal");
+          for (let i = 0; i < path.length; i++) {
+            if (path[i].classList.contains("checkpoint")) {
+              let endModal = document.getElementById("endModal");
+              
+              document.getElementById("endMessage").innerHTML =`You need to complete <span class="red"> all the Checkpoint</span>in order to finish!`
 
-            document.getElementById("endMessage").textContent =
-              "You need to complete all the Checkpoints in order to finish!";
-            // document.getElementById("endMessage").style.color = "red";
 
-            endModal.style.display = "block";
-            break;
-          } else {
-            let endModal = document.getElementById("endModal");
+              endModal.style.display = "block";
+              break;
+            } else {
+              let endModal = document.getElementById("endModal");
 
-            document.getElementById("endMessage").textContent =
-              "You win, thanks for playing!";
-            document.getElementById("endMessage").style.color = "green";
+              document.getElementById("endMessage").innerHTML =
+                `<span class="green">You win,</span> thanks for playing!"`;
+              
 
-            backToHomepageButton = document.getElementById("BackToHomepage");
+              backToHomepageButton = document.getElementById("BackToHomepage");
 
-            backToHomepageButton.addEventListener("click", () => {
-              window.location.href = "index.html";
-            });
+              backToHomepageButton.addEventListener("click", () => {
+                window.location.href = "index.html";
+              });
 
-            endModal.style.display = "block";
+              endModal.style.display = "block";
 
-            console.log("You WIN!");
+              console.log("You WIN!");
+            }
           }
         }
       }
     }
   } else if (key === "ArrowDown") {
-    let newPosition = currentCell + 13;
+      if (modal.style.display !== "block") {
+        let newPosition = currentCell + 13;
 
-    let newCell = document.getElementById(newPosition);
-    if (newCell.classList.contains("w")) {
-      newCell.appendChild(character);
+        let newCell = document.getElementById(newPosition);
+        if (newCell.classList.contains("w")) {
+          newCell.appendChild(character);
 
-      character.style.top = newCell.offsetTop + "px";
-      character.style.left = newCell.offsetLeft + "px";
-      if (newCell.classList.contains("checkpoint")) {
-        fetchQuestions();
-        modal.style.display = "block";
+          character.style.top = newCell.offsetTop + "px";
+          character.style.left = newCell.offsetLeft + "px";
+          if (newCell.classList.contains("checkpoint")) {
+            fetchQuestions();
+            modal.style.display = "block";
+          }
+        }
       }
-    }
   } else if (key === "ArrowLeft") {
-    let newPosition = currentCell - 1;
+    if (modal.style.display !== "block") {
+      let newPosition = currentCell - 1;
 
-    let newCell = document.getElementById(newPosition);
-    if (newCell.classList.contains("w")) {
-      newCell.appendChild(character);
+      let newCell = document.getElementById(newPosition);
+      if (newCell.classList.contains("w")) {
+        newCell.appendChild(character);
 
-      character.style.top = newCell.offsetTop + "px";
-      character.style.left = newCell.offsetLeft + "px";
+        character.style.top = newCell.offsetTop + "px";
+        character.style.left = newCell.offsetLeft + "px";
 
-      if (newCell.classList.contains("checkpoint")) {
-        fetchQuestions();
-        modal.style.display = "block";
+        if (newCell.classList.contains("checkpoint")) {
+          fetchQuestions();
+          modal.style.display = "block";
+        }
       }
     }
   } else if (key === "ArrowRight") {
-    let newPosition = currentCell + 1;
+    if (modal.style.display !== "block") {
+      let newPosition = currentCell + 1;
 
-    let newCell = document.getElementById(newPosition);
-    if (newCell.classList.contains("w")) {
-      newCell.appendChild(character);
+      let newCell = document.getElementById(newPosition);
+      if (newCell.classList.contains("w")) {
+        newCell.appendChild(character);
 
-      character.style.top = newCell.offsetTop + "px";
-      character.style.left = newCell.offsetLeft + "px";
+        character.style.top = newCell.offsetTop + "px";
+        character.style.left = newCell.offsetLeft + "px";
 
-      if (newCell.classList.contains("checkpoint")) {
-        fetchQuestions();
-        modal.style.display = "block";
+        if (newCell.classList.contains("checkpoint")) {
+          fetchQuestions();
+          modal.style.display = "block";
+        }
       }
     }
   }
@@ -259,8 +264,6 @@ function checkAnswer(data) {
         let currentCellID = parseInt(character.parentElement.id);
         let currentCell = document.getElementById(currentCellID);
         currentCell.classList.remove("checkpoint");
-        // currentCell.style.backgroundColor = "";
-        // currentCell.style.borderRadius = "";
         currentCell.style.backgroundImage = "";
       }, 2000);
     } else if (correctAnswer !== selectedValue) {
