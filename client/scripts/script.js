@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
           cell.style.backgroundSize = "contain";  // This ensures that the image fits into the cell.
           cell.style.backgroundRepeat = "no-repeat";  // This ensures the image does not tile.
           cell.style.backgroundPosition = "center";  // This centers the image in the cell.
-          cell.style.borderRadius = "50px";  // You can adjust or remove this as needed.
         }
         
       }
