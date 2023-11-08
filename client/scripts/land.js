@@ -13,5 +13,19 @@ gameStartBtn.addEventListener("click", function () {
   }
 });
 
+let audio = document.getElementById('gameAudio');
+let muteButton = document.getElementById('muteButton');
+let enableAudioButton = document.getElementById('enableAudio');
+
+muteButton.addEventListener('click', function() {
+  audio.muted = true;
+});
+
+enableAudioButton.addEventListener('click', function() {
+  audio.muted = false;
+});
+
+
+
 
 

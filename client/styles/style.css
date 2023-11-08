@@ -4,52 +4,6 @@
   padding: 0;
   font-family: "New Rocker", cursive;
 }
-#homepage {
-  background: none; 
-  border: none;    
-  padding: 0;     
-  outline: none;
-}  
-#homepage:hover img {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-#restartButton {
-  background: none;
-  border: none;    
-  padding: 0;     
-  outline: none;  
- 
-}
-#restartButton:hover img {
-  transform: scale(1.1);
-  cursor: pointer;
- 
-}
-#enableAudio {
-  background: none; 
-  border: none;   
-  padding: 0;     
-  outline: none; 
-    
-}
-#enableAudio:hover img {
-  transform: scale(1.1); 
-  cursor: pointer;
-
-}
-
-#muteButton {
-  background: none; 
-  border: none;   
-  padding: 0;      
-  outline: none;   
-}
-#muteButton:hover img {
-  transform: scale(1.1); 
-  cursor: pointer;
-
-}
 
 body {
   text-align: center;
@@ -58,6 +12,26 @@ body {
   background-size: cover;
   font-family: "New Rocker", cursive;
 }
+
+/* ICONS */
+.homepage-icons{
+  background: transparent; 
+  border: none;
+  padding: 5px;
+  outline: none;
+}
+.homepage-icons img{
+  width: 30px;
+  height: 30px;
+  background: transparent; 
+}
+.homepage-icons img:hover{
+  transform: scale(1.1);
+  background: none;
+  border: none;
+  outline: none;
+}
+
 
 /* MAZE  */
 .main-box {
@@ -69,6 +43,8 @@ body {
   height: 100vh;
   font-family: "new-rock";
 }
+
+
 #maze {
   display: grid;
   grid-template-columns: repeat(13, 50px);
@@ -82,7 +58,7 @@ body {
   width: 50px;
   height: 50px;
   /* background-color: #000; */
-  background-image: url("../images/wall.jpg");
+  background-image: url("../images/wall2.png");
   background-size: cover;
 }
 
@@ -99,11 +75,12 @@ body {
   transform: scaleX(-1);
 }
 
+/* Modal Content */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 60px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -113,7 +90,6 @@ body {
   background-color: rgba(0, 0, 0, 0.65); /* Black w/ opacity */
 }
 
-/* Modal Content */
 .modal-content {
   font-size: 20px;
   background-color: antiquewhite; /*modal content updated to be more readable for students*/ 
@@ -187,7 +163,7 @@ body {
 
 /* radio button styling in the MCQ checkpoint modal */
 #checkp input[type="radio"] {
-   /* display:none; */
+   display:none;
 }
 
  #checkp label {
@@ -205,7 +181,8 @@ body {
   background-color: rgb(224, 179, 115);
 }
 
-  #checkp label + input[type="radio"]:checked + label {
+
+#checkp input[type="radio"]:checked + label {
    background-color: rgb(224, 179, 115);
    color: #000;
    box-shadow: inset 0px 0px 5px rgba(67, 37, 16, 0.5)

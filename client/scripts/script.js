@@ -17,17 +17,6 @@ homepageButton.addEventListener("click", ()=>{
   window.location.href = "index.html"
 })
 
-let audioSource = document.getElementById("gameAudio")
-
-let muteButton = document.getElementById("muteButton")
-muteButton.addEventListener("click", ()=>{
-  audioSource.muted = true;
-})
-
-let audioButton = document.getElementById("enableAudio")
-muteButton.addEventListener("click", ()=>{
-  audioSource.muted = false
-})
 
 
 
@@ -49,14 +38,11 @@ document.addEventListener("DOMContentLoaded", function () {
       "categorySelected"
     ).textContent = `Category Selected: 'Medieval'`;
   } else if (category === "industrialRev") {
-    document.getElementById(
-      "categorySelected"
-    ).textContent = `Category Selected: 'Industrial Revolution'`;
-    document.body.style.backgroundImage =
-      'url("./images/industrialBackground.jpg")';
-    document.getElementById("character").style.background =
-      'url("./images/ind_icon.png")';
+    document.getElementById("categorySelected").textContent = `Category Selected: 'Industrial Revolution'`;
+    document.body.style.backgroundImage = 'url("./images/industrialBackground.jpg")';
+    document.getElementById("character").style.background ='url("./images/ind_icon.png")';
     document.getElementById("character").style.backgroundSize = "cover";
+    // document.querySelectorAll(".cell").style.backgroundImage = 'url("../images/wall2.png")';
   } else {
     document.getElementById(
       "categorySelected"
@@ -273,6 +259,7 @@ function checkAnswer(data) {
     successMessageElement.style.fontSize = "20px";
     wrongMessageElement.style.fontSize = "20px";
 
+
     // correct answer code
     successMessageElement.innerHTML = `<span class="green">Well Done! You got it right!</span>`;
 
@@ -295,6 +282,7 @@ function checkAnswer(data) {
         let currentCell = document.getElementById(currentCellID);
         currentCell.classList.remove("checkpoint");
         currentCell.style.backgroundImage = "";
+      
       }, 2000);
     } else if (correctAnswer !== selectedValue) {
       wrongMessageElement.style.display = "block";
@@ -303,10 +291,50 @@ function checkAnswer(data) {
         wrongMessageElement.style.display = "none";
         fetchQuestions();
       }, 5000);
+      
     } else {
       successMessageElement.textContent = "";
       wrongMessageElement.textContent = "";
     }
   });
 }
+
+
+
+// Erica testing question option selected
+
+
+// const radioButtons = document.querySelectorAll('#checkp input[type="radio"]')
+//         radioButtons.forEach((radio) => {
+//             radio.addEventListener('click', () => {
+//                 document.querySelectorAll('#checkp label').forEach((label) => {
+//                     label.style.backgroundColor = 'antiquewhite';
+//                 });
+
+               
+//                 const label = document.querySelector(`label[for="${radio.id}"]`);
+//                 label.style.backgroundColor = 'rgb(224, 179, 115)';
+//             });
+//         });
+
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  let audio = document.getElementById('gameAudio');
+  let muteButton = document.getElementById('muteButton');
+  let enableAudioButton = document.getElementById('enableAudio');
+
+  muteButton.addEventListener('click', function() {
+    audio.muted = true;
+  });
+
+  enableAudioButton.addEventListener('click', function() {
+    audio.muted = false;
+  });
+});
+
+
+
+
+
+
 module.exports = { checkAnswer, fetchQuestions };

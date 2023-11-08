@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="./styles/style.css" />
     <script defer src="./scripts/script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
-    <audio id = "gameAudio" autoplay src="./images/bm2.mp3" loop></audio>
+    <audio id = "gameAudio" autoplay src="./images/bm.mp3" loop></audio>
   </head>
   <body>
     <section class="main-box">
@@ -14,23 +14,23 @@
             <u><h1>Time Labyrinth</h1></u>
             <h2>A Historical Maze Game</h2>
               <span>
-                <button type = "submit" id = "homepage">
-                  <img src = "./images/home.png" style = "width:30px">
+                <button type = "submit" class="homepage-icons" id="homepage">
+                  <img src = "./images/home.png" >
                 </button>
               </span>
               <span>
-                <button type = "submit" id="restartButton">
-                  <img src = "./images/refresh.png" style = "width:30px">
+                <button type = "submit" class="homepage-icons" id="restartButton">
+                  <img src = "./images/refresh.png" >
                 </button>
                 </span>
               <span>
-                <button type  = "submit" id = "muteButton">
-                  <img src = "./images/volume-mute.png" style = "width:30px">
+                <button type  = "submit" class = "homepage-icons" id="muteButton">
+                  <img src = "./images/volume-mute.png" >
                 </button>
                 </span>
                 <span>
-                  <button type="submit" id="enableAudio">
-                    <img src="./images/volume.png" style = "width:30px">
+                  <button type="submit" class="homepage-icons" id="enableAudio">
+                    <img src="./images/volume.png" >
                   </button>
                   
                   
@@ -42,8 +42,7 @@
         </div>
 
     <div id="168" class="cell" style="visibility: hidden ">
-        <div id="character" style="visibility: visible;"></div>
-        
+        <div id="character" style="visibility: visible;"></div> 
     </div>
 
 
@@ -91,29 +90,41 @@
           <br>
 
           <form id="checkp">
+            <input id="option1" type="radio" name="question" class = "mcqs" value="">
             <label id="labelOp1" for="option1" class="options"></label>
-            <input id="option1" type="radio" name="question" value="">
+            
           
           
             <br>
+            <input id="option2" type="radio" name="question" value="" class = "mcqs">
             <label id="labelOp2" for="option2" class="options"></label>
-            <input id="option2" type="radio" name="question" value="">
+            
           
             <br>
+            <input id="option3" type="radio" name="question" value="" class = "mcqs">
             <label id="labelOp3" for="option3" class="options"></label>
-            <input id="option3" type="radio" name="question" value="">
+            
          
             <br>
+            <input id="option4" type="radio" name="question" value="" class = "mcqs">
             <label id="labelOp4" for="option4" class="options"></label>
-            <input id="option4" type="radio" name="question" value="">
+        
          
             <br>
         </form>
         <br>
-        <button id="submit">Submit</button>
+        <button onclick = "clearRadios()" id="submit">Submit</button>
         </div>  
     </div>
+   
     </section>
+
+    <script>
+      function clearRadios() {
+  let radioButtons= document.getElementsByClassName("mcqs");
+  radioButtons.checked = false;
+}
+      </script>
 
   </body>
 </html>

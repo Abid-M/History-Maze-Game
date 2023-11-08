@@ -94,8 +94,8 @@ else if (key === "ArrowDown") {
 
 
 ## Bugs
-* Resizing browser screen, moves the character icon
-
+* Resizing browser screen moves the character icon
+* The Multiple choice question buttons remain checked after the answer is submitted
 
 ## Future Features
 * Allow users to choose a character icon from a list of options for gameplay.

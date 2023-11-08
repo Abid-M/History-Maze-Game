@@ -22,9 +22,7 @@
     border-radius: 20px;
     box-shadow: 0 0 10px 5px #000;
   } 
-
-
-
+  
   h1 {
     font-size: 6rem;
     font-family: 'New Rocker', cursive;
@@ -108,7 +106,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 1);
     left: 0;
     top: 0;
     border-radius: 20px;
@@ -138,7 +136,6 @@
   display: none;
 }
 
-/* Style the labels to look like buttons */
 .categoryList label {
   cursor: pointer;
   padding: 10px 20px;
@@ -153,35 +150,56 @@
 
 /* Hover effect for labels */
 .categoryList label:hover {
-  background-color: rgba(0, 0, 0, 0.65);; /* Lighter shade when hovered */
-  transform: translateY(-2px); /* Slight raise effect */
+  background-color: rgba(0, 0, 0, 0.65);; 
+  transform: translateY(-2px); 
 }
-
-/* Checked state for labels */
-/* Checked state for labels with a subtle glow effect */
 .categoryList input[type="radio"]:checked + label {
   background-color: rgba(0, 0, 0, 0.75);
-  color: #ffffff; /* White text for better contrast on a dark background */
+  color: #ffffff; 
   box-shadow: 
     0 0 10px 2px rgba(194, 32, 113, 1), /* inner light glow for subtleness */
     0 0 10px 2px rgba(194, 32, 113, 1); /* outer pink glow with lower opacity */
   transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
-/* Focus styles for accessibility */
+
 .categoryList input[type="radio"]:focus + label {
-  outline: 2px solid #fff; /* White outline around the label */
-  outline-offset: 2px; /* Spacing between outline and label */
+  outline: 2px solid #fff; 
+  outline-offset: 2px; /
 }
 
-/* Apply a special font to the 'Industrial Revolution' category */
 #industrial + label {
   font-family: 'DM Serif Display', serif;
 }
 
-/* Apply a different special font to the 'Medieval History' category */
 #medieval + label {
   font-family: 'Germania One', cursive;
 }
 
+#enableAudio {
+  justify-content: right;
+  align-items: right;
+  background: none; 
+  border: none;   
+  padding: 0;     
+  outline: none; 
+    
+}
+#enableAudio:hover img {
+  transform: scale(1.1); 
+  cursor: pointer;
+
+}
+
+#muteButton {
+  background: none; 
+  border: none;   
+  padding: 0;      
+  outline: none;   
+}
+#muteButton:hover img {
+  transform: scale(1.1); 
+  cursor: pointer;
+
+}
 
 

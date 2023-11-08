@@ -7,6 +7,7 @@
     <!-- <script src="./script.js" defer></script> -->
     <title>Maze Game</title>
     <link rel="stylesheet" type="text/css" href="./styles/landing.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
@@ -16,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Germania+One&display=swap" rel="stylesheet">
-<audio autoplay src="./images/bm.mp3" loop></audio>
+<audio id = "gameAudio" autoplay src="./images/bm.mp3" loop></audio>
 
 
 </head>
@@ -38,6 +39,15 @@
         </div>
         <button type="submit" class="btn glow-on-hover" id="gameStartBtn">START GAME</button>
         
+        <div>
+          <button type= "submit" class ="homepage-icons">
+            <img src = "./images/volume-mute.png" style = "" id="muteButton">
+          </button>
+          <button type="submit" class ="homepage-icons" id="enableAudio">
+            <img src="./images/volume.png" style = "">
+          </button>
+          </div>
+         
     </section>
   </body>
 </html>
