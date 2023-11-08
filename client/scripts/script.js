@@ -23,11 +23,11 @@ document.addEventListener("DOMContentLoaded", function () {
   if (category === "medieval") {
     document.getElementById(
       "categorySelected"
-    ).textContent = `Category Selected: Medieval`;
+    ).textContent = `Category Selected: 'Medieval'`;
   } else if (category === "industrialRev") {
     document.getElementById(
       "categorySelected"
-    ).textContent = `Category Selected: Industrial Revolution`;
+    ).textContent = `Category Selected: 'Industrial Revolution'`;
     document.body.style.backgroundImage =
       'url("./images/industrialBackground.jpg")';
     document.getElementById("character").style.background =
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
         cell.id === "17"
       ) {
         cell.classList.add("checkpoint");
-        cell.style.backgroundImage = "url('./images/chest.png')";
+        category === 'medieval' ? cell.style.backgroundImage = "url('./images/med_check_icon.png')" : cell.style.backgroundImage = "url('./images/Ind_check_icon.png')"
         cell.style.backgroundSize = "contain"; // This ensures that the image fits into the cell.
         cell.style.backgroundRepeat = "no-repeat"; // This ensures the image does not tile.
         cell.style.backgroundPosition = "center"; // This centers the image in the cell.
@@ -219,7 +219,6 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-//erica add
 function checkAnswer(data) {
   let checkp = document.querySelector("#submit");
   let modal = document.getElementById("myModal");
@@ -240,12 +239,12 @@ function checkAnswer(data) {
     const wrongMessageElement = document.getElementById("wrongMessage");
 
     // correct answer code
-    successMessageElement.innerHTML = `<span class="green">Well Done! You got it right</span>!`;
+    successMessageElement.innerHTML = `<span class="green">Well Done! You got it right!</span>`;
 
     // wrong answer code
-    wrongMessageElement.innerHTML = `<span class="red">You got it Wrong</span>! 
-    <br><br>\nCorrect Answer : <br><span class="small"> ${correctAnswer}! </span><br>
-    \nTry a different question!`;
+    wrongMessageElement.innerHTML = `<span class="red">You got it Wrong!</span> 
+    <br><br>\nCorrect Answer : <br><span class="small"> '${correctAnswer}' </span><br><br>
+    \nTry a different question! <br><br><hr>`;
 
     successMessageElement.style.display = "none";
     wrongMessageElement.style.display = "none";
@@ -263,71 +262,18 @@ function checkAnswer(data) {
         // currentCell.style.backgroundColor = "";
         // currentCell.style.borderRadius = "";
         currentCell.style.backgroundImage = "";
-      }, 3000);
+      }, 2000);
     } else if (correctAnswer !== selectedValue) {
       wrongMessageElement.style.display = "block";
 
       setTimeout(function () {
         wrongMessageElement.style.display = "none";
         fetchQuestions();
-      }, 3000);
+      }, 5000);
     } else {
       successMessageElement.textContent = "";
       wrongMessageElement.textContent = "";
     }
   });
 }
-
-// THIS IS PREVIOUS CODE from main on tuesday. Can delete after check code above
-// function checkAnswer(data) {
-//   let checkp = document.querySelector("#submit");
-//   let modal = document.getElementById("myModal");
-
-//   checkp.addEventListener("click", () => {
-//     const selectedValue = document.querySelector('input[name="question"]:checked').value;
-//     let correctAnswer;
-
-//     for (let i = 0; i < 4; i++) {
-//       if (data.answers[i].value == 1) {
-//         correctAnswer = data.answers[i].text;
-//       }
-//     }
-
-//     const successMessageElement = document.getElementById("successMessage");
-//     const wrongMessageElement = document.getElementById("wrongMessage");
-
-//     successMessageElement.textContent = "";
-//     wrongMessageElement.textContent = "";
-
-//     if (correctAnswer === selectedValue) {
-//       let userChecks = document.getElementById("userCheckpoints")
-//       successMessageElement.textContent = `Well Done! You got it right!`;
-
-//       setTimeout(function() {
-//         successMessageElement.textContent = '';
-//         modal.style.display = "none";
-
-//         let currentCellID = parseInt(character.parentElement.id);
-//         let currentCell = document.getElementById(currentCellID)
-//         currentCell.classList.remove("checkpoint")
-//         currentCell.style.backgroundColor = "";
-//         currentCell.style.borderRadius = "";
-//       }, 3000);
-//     } else if (correctAnswer !== selectedValue){
-
-//     wrongMessageElement.textContent = `You got it Wrong!\nCorrect Answer: ${correctAnswer}!\nTry a different question!`;
-
-//       setTimeout(function() {
-//         wrongMessageElement.textContent = '';
-//         fetchQuestions();
-//       }, 3000);
-//     }
-//     else{
-//       successMessageElement.textContent = ""
-//       wrongMessageElement.textContent = ""
-
-//     }
-//   });
-// }
-
 module.exports = { checkAnswer, fetchQuestions };
