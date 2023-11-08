@@ -4,6 +4,53 @@
   padding: 0;
   font-family: "New Rocker", cursive;
 }
+#homepage {
+  background: none; 
+  border: none;    
+  padding: 0;     
+  outline: none;
+}  
+#homepage:hover img {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+#restartButton {
+  background: none;
+  border: none;    
+  padding: 0;     
+  outline: none;  
+ 
+}
+#restartButton:hover img {
+  transform: scale(1.1);
+  cursor: pointer;
+ 
+}
+#enableAudio {
+  background: none; 
+  border: none;   
+  padding: 0;     
+  outline: none; 
+    
+}
+#enableAudio:hover img {
+  transform: scale(1.1); 
+  cursor: pointer;
+
+}
+
+#muteButton {
+  background: none; 
+  border: none;   
+  padding: 0;      
+  outline: none;   
+}
+#muteButton:hover img {
+  transform: scale(1.1); 
+  cursor: pointer;
+
+}
+
 body {
   text-align: center;
   background-image: url("../images/background2.jpg");
@@ -16,8 +63,7 @@ body {
 .main-box {
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
-  box-shadow: 0 0 10px 5px #000;
+  
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -70,7 +116,7 @@ body {
 /* Modal Content */
 .modal-content {
   font-size: 20px;
-  background-color: antiquewhite; /*modal content updated to be more readable */ 
+  background-color: antiquewhite; /*modal content updated to be more readable for students*/ 
   margin: 30px auto;
   padding: 20px;
   border: 1px solid #888;
@@ -103,27 +149,16 @@ body {
   color: #ff5722;
 }
 
-/* #endMEssage h1{
-  margin-bottom: 32px;
-  color: red;
-}
-
-#endMEssage{
-  margin-bottom: 32px;
-} */
-
 
 #BackToHomepage{
-  
+  background-color: rgba(0, 0, 0, 0.55);
+  border-radius: 50px;
+  color: white;
   padding: 10px;
   font-size: 20px;
   margin-bottom: 16px;
   margin-top: 30px;
 }
-
-
-
-
 
 /* Checkpoint  */
 .green {
@@ -141,6 +176,7 @@ body {
 }
 .options {
   line-height: 2;
+  padding: 10px;
 }
 #submit {
   font-size: 20px;
@@ -150,27 +186,47 @@ body {
 
 
 /* radio button styling in the MCQ checkpoint modal */
-#checkp > input[type=radio] {
-   display:none;
+#checkp input[type="radio"] {
+   /* display:none; */
 }
 
- #checkp > label {
+ #checkp label {
    display: inline-block;
-   border: 1px solid black;
-   border-radius:10%;
+   border: 1px solid rgba(67, 37, 16, 0.5);
+   padding: 10px 20px;
+   margin: 5px;
+   border-radius:5px;
    color: black;
    background-color: antiquewhite;
+   cursor:pointer;
 }
 
-  #checkp > label + input[type=radio]:checked {
-   background-color: rgb(243, 220, 189);
+#checkp label:hover{
+  background-color: rgb(224, 179, 115);
+}
+
+  #checkp label + input[type="radio"]:checked + label {
+   background-color: rgb(224, 179, 115);
    color: #000;
-   box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5)
+   box-shadow: inset 0px 0px 5px rgba(67, 37, 16, 0.5)
 }
 
-#checkp > label:hover{
-  background-color: rgb(248, 231, 208);
+
+
+#checkp input[type="radio"]:focus + label {
+  outline: 2px solid #fff; 
+  outline-offset: 2px; 
 }
+
+/*media query to fix the screen-sizing issue*/ 
+/*using average resolution for tv sizes - 1920px */
+
+@media (max-width:1920px){
+  .main-box{
+    height:100vh;
+  }
+}
+
 
 
 

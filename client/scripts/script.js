@@ -7,6 +7,30 @@ span.addEventListener("click", () => {
   endModal.style.display = "none";
 });
 
+let restartButton = document.querySelector("#restartButton")
+restartButton.addEventListener("click", ()=>{
+  window.location.href = "maze.html"
+})
+
+let homepageButton = document.querySelector("#homepage")
+homepageButton.addEventListener("click", ()=>{
+  window.location.href = "index.html"
+})
+
+let audioSource = document.getElementById("gameAudio")
+
+let muteButton = document.getElementById("muteButton")
+muteButton.addEventListener("click", ()=>{
+  audioSource.muted = true;
+})
+
+let audioButton = document.getElementById("enableAudio")
+muteButton.addEventListener("click", ()=>{
+  audioSource.muted = false
+})
+
+
+
 let startModal = document.getElementById("startModal");
 //let closebutton  = document.getElementsByClassName("close")
 let closebutton = document.getElementById("instructions-close");
@@ -67,12 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
         cell.style.backgroundColor = "gold";
       }
 
-      if (
-        cell.id === "112" ||
-        cell.id === "121" ||
-        cell.id === "62" ||
-        cell.id === "17"
-      ) {
+      if (cell.id === "112" || cell.id === "121" || cell.id === "62" || cell.id === "17") {
         cell.classList.add("checkpoint");
         category === 'medieval' ? cell.style.backgroundImage = "url('./images/med_check_icon.png')" : cell.style.backgroundImage = "url('./images/Ind_check_icon.png')"
         cell.style.backgroundSize = "contain"; // This ensures that the image fits into the cell.
@@ -145,22 +164,30 @@ document.addEventListener("keydown", (event) => {
             if (path[i].classList.contains("checkpoint")) {
               let endModal = document.getElementById("endModal");
               
-              document.getElementById("endMessage").innerHTML =`You need to complete <span class="red"> all the Checkpoint</span>in order to finish!`
+              document.getElementById("endMessage").innerHTML =`You need to complete <span class="red"> all the Checkpoints </span>in order to finish!`
 
-
+              backToHomepageButton = document.getElementById("BackToHomepage")
+              backToHomepageButton.textContent = "Back to Game"
+              
+              
               endModal.style.display = "block";
+
+              backToHomepageButton.addEventListener("click", ()=>{
+                endModal.style.display = "none"
+
+              })
               break;
             } else {
               let endModal = document.getElementById("endModal");
 
               document.getElementById("endMessage").innerHTML =
-                `<span class="green">You win,</span> thanks for playing!"`;
+                `<span class="green">You win,</span> thanks for playing!<p>Free Roam!</p>`;
               
 
               backToHomepageButton = document.getElementById("BackToHomepage");
 
               backToHomepageButton.addEventListener("click", () => {
-                window.location.href = "index.html";
+                endModal.style.display = "none"
               });
 
               endModal.style.display = "block";
@@ -242,6 +269,9 @@ function checkAnswer(data) {
 
     const successMessageElement = document.getElementById("successMessage");
     const wrongMessageElement = document.getElementById("wrongMessage");
+
+    successMessageElement.style.fontSize = "20px";
+    wrongMessageElement.style.fontSize = "20px";
 
     // correct answer code
     successMessageElement.innerHTML = `<span class="green">Well Done! You got it right!</span>`;

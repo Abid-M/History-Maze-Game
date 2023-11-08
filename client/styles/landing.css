@@ -41,6 +41,7 @@
   h4 {
     font-size: 2rem;
     margin: 20px 0;
+    text-shadow: 2px 4px 3px #000000;
     
   }
   .category{
@@ -55,26 +56,11 @@
     margin: 30px auto;
     font-family: 'Prompt', sans-serif;
   }
-  .btn {
-    cursor: pointer;
-    color: white;
-    border: 1px #ffffff solid;
-    border-radius: 50px;
-    padding: 7px 16px;
-    line-height: 1.5;
-    width: 300px;
-    margin: 20px auto;
-    background-color: rgb(180, 132, 219);
-    font-family:'New Rocker', cursive;
-    font-size: 20px;
-  }
-  .btn:hover{
-    background-color: rgb(109, 59, 109) ;
-  }
 
 .glow-on-hover {
     width: 220px;
     height: 50px;
+    margin: 20px auto;
     border: none;
     outline: none;
     color: #fff;
@@ -82,7 +68,9 @@
     cursor: pointer;
     position: relative;
     z-index: 0;
+    line-height: 1.5;
     border-radius: 20px;
+    font-family:'New Rocker', cursive;
 }
 
 .glow-on-hover:before {
@@ -103,7 +91,7 @@
 }
 
 .glow-on-hover:active {
-    color: #000
+    color: rgba(0, 0, 0, 0.85)
 }
 
 .glow-on-hover:active:after {
@@ -120,7 +108,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #111;
+    background: rgba(0, 0, 0, 0.85);
     left: 0;
     top: 0;
     border-radius: 20px;
@@ -165,21 +153,20 @@
 
 /* Hover effect for labels */
 .categoryList label:hover {
-  background-color: rgba(0, 0, 0, 0.75);; /* Lighter shade when hovered */
+  background-color: rgba(0, 0, 0, 0.65);; /* Lighter shade when hovered */
   transform: translateY(-2px); /* Slight raise effect */
 }
 
 /* Checked state for labels */
+/* Checked state for labels with a subtle glow effect */
 .categoryList input[type="radio"]:checked + label {
-  background-color: rgba(194, 32, 113, 0.75);
+  background-color: rgba(0, 0, 0, 0.75);
   color: #ffffff; /* White text for better contrast on a dark background */
-  /* Glow effect */
-  box-shadow: 0 0 0 0 #68103c, /* inner pink glow */
-               0 0 20px 4px #921855; /* outer pink glow */
+  box-shadow: 
+    0 0 10px 2px rgba(194, 32, 113, 1), /* inner light glow for subtleness */
+    0 0 10px 2px rgba(194, 32, 113, 1); /* outer pink glow with lower opacity */
   transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
-
-
 /* Focus styles for accessibility */
 .categoryList input[type="radio"]:focus + label {
   outline: 2px solid #fff; /* White outline around the label */

@@ -6,13 +6,38 @@
     <link rel="stylesheet" type="text/css" href="./styles/style.css" />
     <script defer src="./scripts/script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+    <audio id = "gameAudio" autoplay src="./images/bm.mp3" loop></audio>
   </head>
   <body>
     <section class="main-box">
-        <div style="background-color: rgba(255, 255, 255, 0.5); padding: 20px">
+        <div style="background-color: rgba(250,235,215, 0.5); padding: 20px; border-radius: 20px;">
             <u><h1>Time Labyrinth</h1></u>
-            <h2>An adventure maze game</h2>
-            <div id="maze"></div>
+            <h2>A Historical Maze Game</h2>
+              <span>
+                <button type = "submit" id = "homepage">
+                  <img src = "./images/home.png" style = "width:30px">
+                </button>
+              </span>
+              <span>
+                <button type = "submit" id="restartButton">
+                  <img src = "./images/refresh.png" style = "width:30px">
+                </button>
+                </span>
+              <span>
+                <button type  = "submit" id = "muteButton">
+                  <img src = "./images/volume-mute.png" style = "width:30px">
+                </button>
+                </span>
+                <span>
+                  <button type="submit" id="enableAudio">
+                    <img src="./images/volume.png" style = "width:30px">
+                  </button>
+                  
+                  
+                </span>
+
+            <div id="maze">
+            </div>
             <span id="categorySelected" style="font-size: 25px"></span>
         </div>
 
@@ -68,6 +93,7 @@
           <form id="checkp">
             <label id="labelOp1" for="option1" class="options"></label>
             <input id="option1" type="radio" name="question" value="">
+          
           
             <br>
             <label id="labelOp2" for="option2" class="options"></label>
