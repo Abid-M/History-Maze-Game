@@ -68,29 +68,126 @@
             cell.style.backgroundPosition = "center"; // This centers the image in the cell.
           }
 ```
-* Implementing character icon movement
+* Implementing character icon movement and triggering a multiple choice quiz to pop up when our character hits a checkpoint
 ```
-else if (key === "ArrowDown") {
-    let newPosition = currentCell + 13;
+document.addEventListener("keydown", (event) => {
+  const key = event.key;
+  const modal = document.getElementById("myModal");
+  const character = document.getElementById("character");
+  const currentCell = parseInt(character.parentElement.id);
 
-    let newCell = document.getElementById(newPosition);
-    if (newCell.classList.contains("w")) {
-      newCell.appendChild(character);
+  if (modal.style.display === "block") return;
 
-      character.style.top = newCell.offsetTop + "px";
-      character.style.left = newCell.offsetLeft + "px";
-      if (newCell.classList.contains("checkpoint")) {
-        fetchQuestions();
-        modal.style.display = "block";
+  let newPosition;
+  let direction;
+
+  if (key === "ArrowUp") {
+    newPosition = currentCell - 13;
+    direction = "top";
+  } else if (key === "ArrowDown") {
+    newPosition = currentCell + 13;
+    direction = "top";
+  } else if (key === "ArrowLeft") {
+    newPosition = currentCell - 1;
+    direction = "left";
+  } else if (key === "ArrowRight") {
+    newPosition = currentCell + 1;
+    direction = "left";
+  }
+
+  const newCell = document.getElementById(newPosition);
+  
+  if (newCell && newCell.classList.contains("w")) {
+    newCell.appendChild(character);
+    character.style[direction] = newCell.style[direction];
+    
+    if (newCell.classList.contains("checkpoint")) {
+      fetchQuestions();
+      modal.style.display = "block";
+    }
+
+    if (newCell.id === "2") {
+      const path = document.querySelectorAll(".w");
+      const endModal = document.getElementById("endModal");
+      let hasCheckpoint = false;
+
+      for (let i = 0; i < path.length; i++) {
+        const cell = path[i];
+        if (cell.classList.contains("checkpoint")) {
+          hasCheckpoint = true;
+          break;
+        }
       }
+
+      if (hasCheckpoint) {
+        document.getElementById("endMessage").innerHTML = `You need to complete <span class="red">all the Checkpoints</span> in order to finish!`;
+      } else {
+        document.getElementById("endMessage").innerHTML = `<span class="green">You win,</span> thanks for playing!<p>Free Roam!</p>`;
+        console.log("You WIN!");
+      }
+
+      endModal.style.display = "block";
+
+      const backToHomepageButton = document.getElementById("BackToHomepage");
+      backToHomepageButton.textContent = "Back to Game";
+
+      backToHomepageButton.addEventListener("click", () => {
+        endModal.style.display = "none";
+      });
     }
   }
+});
 ```
+
+* Getting the answer to the multiple choice question to be checked against the solutions in our API
+
+```function checkAnswer(data) {
+  const checkp = document.querySelector("#submit");
+  const modal = document.getElementById("myModal");
+  const successMessageElement = document.getElementById("successMessage");
+  const wrongMessageElement = document.getElementById("wrongMessage");
+  
+  checkp.addEventListener("click", () => {
+    const selectedValue = document.querySelector('input[name="question"]:checked').value;
+    const correctAnswer = data.answers.find(answer => answer.value === 1)?.text;
+    
+    successMessageElement.style.fontSize = wrongMessageElement.style.fontSize = "20px";
+    
+    successMessageElement.innerHTML = `<span class="green">Well Done! You got it right!</span>`;
+    wrongMessageElement.innerHTML = `<span class="red">You got it Wrong!</span><br><br>\nCorrect Answer : <br><span class="small"> '${correctAnswer}' </span><br><br>\nTry a different question! <br><br><hr>`;
+    
+    successMessageElement.style.display = wrongMessageElement.style.display = "none";
+    
+    if (correctAnswer === selectedValue) {
+      successMessageElement.style.display = "block";
+      
+      setTimeout(() => {
+        successMessageElement.style.display = "none";
+        modal.style.display = "none";
+        const currentCellID = parseInt(character.parentElement.id);
+        const currentCell = document.getElementById(currentCellID);
+        currentCell.classList.remove("checkpoint");
+        currentCell.style.backgroundImage = "";
+      }, 2000);
+    } else {
+      wrongMessageElement.style.display = "block";
+      
+      setTimeout(() => {
+        wrongMessageElement.style.display = "none";
+        fetchQuestions();
+      }, 5000);
+    }
+  });
+}```
+
+
 
 ### Challenges
 
-* Initially getting movement of the character icon was tricky to implement/
-* Checkpoint system
+* Initially getting movement of the character icon was tricky to implement.
+* Checkpoint system.
+* Getting the audio mute buttons to work.
+* Some of the more advanced styling techniques were very hard to implement.
 
 
 ## Bugs

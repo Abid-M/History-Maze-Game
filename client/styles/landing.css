@@ -202,4 +202,23 @@
 
 }
 
+/* ICONS */
+.homepage-icons{
+  background: transparent; 
+  border: none;
+  padding: 5px;
+  outline: none;
+}
+.homepage-icons img{
+  width: 30px;
+  height: 30px;
+  background: transparent; 
+}
+.homepage-icons img:hover{
+  transform: scale(1.1);
+  background: none;
+  border: none;
+  outline: none;
+}
+
 

@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.style.backgroundImage = 'url("./images/industrialBackground.jpg")';
     document.getElementById("character").style.background ='url("./images/ind_icon.png")';
     document.getElementById("character").style.backgroundSize = "cover";
-    // document.querySelectorAll(".cell").style.backgroundImage = 'url("../images/wall2.png")';
   } else {
     document.getElementById(
       "categorySelected"
@@ -51,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const maze = document.getElementById("maze");
+  //maze is a <div> 
 
   // Array of cell IDs that should be white
   const cellIds = [
@@ -92,8 +92,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Position the character at the start cell (cell ID 168)
   const character = document.getElementById("character");
-  character.style.top = startCell.offsetTop + "px";
-  character.style.left = startCell.offsetLeft + "px";
+  character.style.top = startCell.offsetTop + "px"; // setting the top property of character equal to the vertical position of startCell relative to its offset parent - aligning character with the top of the startCell element.
+  character.style.left = startCell.offsetLeft + "px"; 
 });
 
 async function fetchQuestions() {
@@ -117,205 +117,114 @@ async function fetchQuestions() {
 }
 
 document.addEventListener("keydown", (event) => {
-  let key = event.key;
-  let modal = document.getElementById("myModal");
+  const key = event.key;
+  const modal = document.getElementById("myModal");
+  const character = document.getElementById("character");
+  const currentCell = parseInt(character.parentElement.id);
 
-  // up -13, down +13, left -1, right +1
+  if (modal.style.display === "block") return;
 
-  let character = document.getElementById("character");
-  let currentCell = parseInt(character.parentElement.id);
-  console.log(currentCell);
+  let newPosition;
+  let direction;
 
   if (key === "ArrowUp") {
-    if (modal.style.display !== "block") {
-      let newPosition = currentCell - 13;
-      let newCell = document.getElementById(newPosition);
-
-      if (newCell.classList.contains("w")) {
-        newCell.appendChild(character);
-
-        character.style.top = newCell.offsetTop + "px";
-        character.style.left = newCell.offsetLeft + "px";
-
-        if (newCell.className.includes("checkpoint")) {
-          fetchQuestions();
-          modal.style.display = "block";
-        }
-
-        if (newCell.id === "2") {
-          let path = document.querySelectorAll(".w");
-          console.log(path);
-
-          for (let i = 0; i < path.length; i++) {
-            if (path[i].classList.contains("checkpoint")) {
-              let endModal = document.getElementById("endModal");
-              
-              document.getElementById("endMessage").innerHTML =`You need to complete <span class="red"> all the Checkpoints </span>in order to finish!`
-
-              backToHomepageButton = document.getElementById("BackToHomepage")
-              backToHomepageButton.textContent = "Back to Game"
-              
-              
-              endModal.style.display = "block";
-
-              backToHomepageButton.addEventListener("click", ()=>{
-                endModal.style.display = "none"
-
-              })
-              break;
-            } else {
-              let endModal = document.getElementById("endModal");
-
-              document.getElementById("endMessage").innerHTML =
-                `<span class="green">You win,</span> thanks for playing!<p>Free Roam!</p>`;
-              
-
-              backToHomepageButton = document.getElementById("BackToHomepage");
-
-              backToHomepageButton.addEventListener("click", () => {
-                endModal.style.display = "none"
-              });
-
-              endModal.style.display = "block";
-
-              console.log("You WIN!");
-            }
-          }
-        }
-      }
-    }
+    newPosition = currentCell - 13;
+    direction = "top";
   } else if (key === "ArrowDown") {
-      if (modal.style.display !== "block") {
-        let newPosition = currentCell + 13;
-
-        let newCell = document.getElementById(newPosition);
-        if (newCell.classList.contains("w")) {
-          newCell.appendChild(character);
-
-          character.style.top = newCell.offsetTop + "px";
-          character.style.left = newCell.offsetLeft + "px";
-          if (newCell.classList.contains("checkpoint")) {
-            fetchQuestions();
-            modal.style.display = "block";
-          }
-        }
-      }
+    newPosition = currentCell + 13;
+    direction = "top";
   } else if (key === "ArrowLeft") {
-    if (modal.style.display !== "block") {
-      let newPosition = currentCell - 1;
-
-      let newCell = document.getElementById(newPosition);
-      if (newCell.classList.contains("w")) {
-        newCell.appendChild(character);
-
-        character.style.top = newCell.offsetTop + "px";
-        character.style.left = newCell.offsetLeft + "px";
-
-        if (newCell.classList.contains("checkpoint")) {
-          fetchQuestions();
-          modal.style.display = "block";
-        }
-      }
-    }
+    newPosition = currentCell - 1;
+    direction = "left";
   } else if (key === "ArrowRight") {
-    if (modal.style.display !== "block") {
-      let newPosition = currentCell + 1;
+    newPosition = currentCell + 1;
+    direction = "left";
+  }
 
-      let newCell = document.getElementById(newPosition);
-      if (newCell.classList.contains("w")) {
-        newCell.appendChild(character);
+  const newCell = document.getElementById(newPosition);
+  
+  if (newCell && newCell.classList.contains("w")) {
+    newCell.appendChild(character);
+    character.style[direction] = newCell.style[direction];
+    
+    if (newCell.classList.contains("checkpoint")) {
+      fetchQuestions();
+      modal.style.display = "block";
+    }
 
-        character.style.top = newCell.offsetTop + "px";
-        character.style.left = newCell.offsetLeft + "px";
+    if (newCell.id === "2") {
+      const path = document.querySelectorAll(".w");
+      const endModal = document.getElementById("endModal");
+      let hasCheckpoint = false;
 
-        if (newCell.classList.contains("checkpoint")) {
-          fetchQuestions();
-          modal.style.display = "block";
+      for (let i = 0; i < path.length; i++) {
+        const cell = path[i];
+        if (cell.classList.contains("checkpoint")) {
+          hasCheckpoint = true;
+          break;
         }
       }
+
+      if (hasCheckpoint) {
+        document.getElementById("endMessage").innerHTML = `You need to complete <span class="red">all the Checkpoints</span> in order to finish!`;
+      } else {
+        document.getElementById("endMessage").innerHTML = `<span class="green">You win,</span> thanks for playing!<p>Free Roam!</p>`;
+        console.log("You WIN!");
+      }
+
+      endModal.style.display = "block";
+
+      const backToHomepageButton = document.getElementById("BackToHomepage");
+      backToHomepageButton.textContent = "Back to Game";
+
+      backToHomepageButton.addEventListener("click", () => {
+        endModal.style.display = "none";
+      });
     }
   }
 });
 
+
+
 function checkAnswer(data) {
-  let checkp = document.querySelector("#submit");
-  let modal = document.getElementById("myModal");
-
+  const checkp = document.querySelector("#submit");
+  const modal = document.getElementById("myModal");
+  const successMessageElement = document.getElementById("successMessage");
+  const wrongMessageElement = document.getElementById("wrongMessage");
+  
   checkp.addEventListener("click", () => {
-    const selectedValue = document.querySelector(
-      'input[name="question"]:checked'
-    ).value;
-    let correctAnswer;
-
-    for (let i = 0; i < 4; i++) {
-      if (data.answers[i].value == 1) {
-        correctAnswer = data.answers[i].text;
-      }
-    }
-
-    const successMessageElement = document.getElementById("successMessage");
-    const wrongMessageElement = document.getElementById("wrongMessage");
-
-    successMessageElement.style.fontSize = "20px";
-    wrongMessageElement.style.fontSize = "20px";
-
-
-    // correct answer code
+    const selectedValue = document.querySelector('input[name="question"]:checked').value;
+    const correctAnswer = data.answers.find(answer => answer.value === 1)?.text;
+    
+    successMessageElement.style.fontSize = wrongMessageElement.style.fontSize = "20px";
+    
     successMessageElement.innerHTML = `<span class="green">Well Done! You got it right!</span>`;
-
-    // wrong answer code
-    wrongMessageElement.innerHTML = `<span class="red">You got it Wrong!</span> 
-    <br><br>\nCorrect Answer : <br><span class="small"> '${correctAnswer}' </span><br><br>
-    \nTry a different question! <br><br><hr>`;
-
-    successMessageElement.style.display = "none";
-    wrongMessageElement.style.display = "none";
-
+    wrongMessageElement.innerHTML = `<span class="red">You got it Wrong!</span><br><br>\nCorrect Answer : <br><span class="small"> '${correctAnswer}' </span><br><br>\nTry a different question! <br><br><hr>`;
+    
+    successMessageElement.style.display = wrongMessageElement.style.display = "none";
+    
     if (correctAnswer === selectedValue) {
       successMessageElement.style.display = "block";
-
-      setTimeout(function () {
+      
+      setTimeout(() => {
         successMessageElement.style.display = "none";
         modal.style.display = "none";
-
-        let currentCellID = parseInt(character.parentElement.id);
-        let currentCell = document.getElementById(currentCellID);
+        const currentCellID = parseInt(character.parentElement.id);
+        const currentCell = document.getElementById(currentCellID);
         currentCell.classList.remove("checkpoint");
         currentCell.style.backgroundImage = "";
-      
       }, 2000);
-    } else if (correctAnswer !== selectedValue) {
+    } else {
       wrongMessageElement.style.display = "block";
-
-      setTimeout(function () {
+      
+      setTimeout(() => {
         wrongMessageElement.style.display = "none";
         fetchQuestions();
       }, 5000);
-      
-    } else {
-      successMessageElement.textContent = "";
-      wrongMessageElement.textContent = "";
     }
   });
 }
 
-
-
-// Erica testing question option selected
-
-
-// const radioButtons = document.querySelectorAll('#checkp input[type="radio"]')
-//         radioButtons.forEach((radio) => {
-//             radio.addEventListener('click', () => {
-//                 document.querySelectorAll('#checkp label').forEach((label) => {
-//                     label.style.backgroundColor = 'antiquewhite';
-//                 });
-
-               
-//                 const label = document.querySelector(`label[for="${radio.id}"]`);
-//                 label.style.backgroundColor = 'rgb(224, 179, 115)';
-//             });
-//         });
 
 
 window.addEventListener('DOMContentLoaded', (event) => {
