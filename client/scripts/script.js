@@ -7,18 +7,15 @@ span.addEventListener("click", () => {
   endModal.style.display = "none";
 });
 
-let restartButton = document.querySelector("#restartButton")
-restartButton.addEventListener("click", ()=>{
-  window.location.href = "maze.html"
-})
+let restartButton = document.querySelector("#restartButton");
+restartButton.addEventListener("click", () => {
+  window.location.href = "maze.html";
+});
 
-let homepageButton = document.querySelector("#homepage")
-homepageButton.addEventListener("click", ()=>{
-  window.location.href = "index.html"
-})
-
-
-
+let homepageButton = document.querySelector("#homepage");
+homepageButton.addEventListener("click", () => {
+  window.location.href = "index.html";
+});
 
 let startModal = document.getElementById("startModal");
 //let closebutton  = document.getElementsByClassName("close")
@@ -38,9 +35,13 @@ document.addEventListener("DOMContentLoaded", function () {
       "categorySelected"
     ).textContent = `Category Selected: 'Medieval'`;
   } else if (category === "industrialRev") {
-    document.getElementById("categorySelected").textContent = `Category Selected: 'Industrial Revolution'`;
-    document.body.style.backgroundImage = 'url("./images/industrialBackground.jpg")';
-    document.getElementById("character").style.background ='url("./images/ind_icon.png")';
+    document.getElementById(
+      "categorySelected"
+    ).textContent = `Category Selected: 'Industrial Revolution'`;
+    document.body.style.backgroundImage =
+      'url("./images/industrialBackground.jpg")';
+    document.getElementById("character").style.background =
+      'url("./images/ind_icon.png")';
     document.getElementById("character").style.backgroundSize = "cover";
   } else {
     document.getElementById(
@@ -50,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const maze = document.getElementById("maze");
-  //maze is a <div> 
+  //maze is a <div>
 
   // Array of cell IDs that should be white
   const cellIds = [
@@ -77,9 +78,16 @@ document.addEventListener("DOMContentLoaded", function () {
         cell.style.backgroundColor = "gold";
       }
 
-      if (cell.id === "112" || cell.id === "121" || cell.id === "62" || cell.id === "17") {
+      if (
+        cell.id === "112" ||
+        cell.id === "121" ||
+        cell.id === "62" ||
+        cell.id === "17"
+      ) {
         cell.classList.add("checkpoint");
-        category === 'medieval' ? cell.style.backgroundImage = "url('./images/med_check_icon.png')" : cell.style.backgroundImage = "url('./images/Ind_check_icon.png')"
+        category === "medieval"
+          ? (cell.style.backgroundImage = "url('./images/med_check_icon.png')")
+          : (cell.style.backgroundImage = "url('./images/Ind_check_icon.png')");
         cell.style.backgroundSize = "contain"; // This ensures that the image fits into the cell.
         cell.style.backgroundRepeat = "no-repeat"; // This ensures the image does not tile.
         cell.style.backgroundPosition = "center"; // This centers the image in the cell.
@@ -93,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Position the character at the start cell (cell ID 168)
   const character = document.getElementById("character");
   character.style.top = startCell.offsetTop + "px"; // setting the top property of character equal to the vertical position of startCell relative to its offset parent - aligning character with the top of the startCell element.
-  character.style.left = startCell.offsetLeft + "px"; 
+  character.style.left = startCell.offsetLeft + "px";
 });
 
 async function fetchQuestions() {
@@ -142,11 +150,11 @@ document.addEventListener("keydown", (event) => {
   }
 
   const newCell = document.getElementById(newPosition);
-  
+
   if (newCell && newCell.classList.contains("w")) {
     newCell.appendChild(character);
     character.style[direction] = newCell.style[direction];
-    
+
     if (newCell.classList.contains("checkpoint")) {
       fetchQuestions();
       modal.style.display = "block";
@@ -166,9 +174,13 @@ document.addEventListener("keydown", (event) => {
       }
 
       if (hasCheckpoint) {
-        document.getElementById("endMessage").innerHTML = `You need to complete <span class="red">all the Checkpoints</span> in order to finish!`;
+        document.getElementById(
+          "endMessage"
+        ).innerHTML = `You need to complete <span class="red">all the Checkpoints</span> in order to finish!`;
       } else {
-        document.getElementById("endMessage").innerHTML = `<span class="green">You win,</span> thanks for playing!<p>Free Roam!</p>`;
+        document.getElementById(
+          "endMessage"
+        ).innerHTML = `<span class="green">You win,</span> thanks for playing!<p>Free Roam!</p>`;
         console.log("You WIN!");
       }
 
@@ -184,28 +196,32 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-
-
 function checkAnswer(data) {
   const checkp = document.querySelector("#submit");
   const modal = document.getElementById("myModal");
   const successMessageElement = document.getElementById("successMessage");
   const wrongMessageElement = document.getElementById("wrongMessage");
-  
+
   checkp.addEventListener("click", () => {
-    const selectedValue = document.querySelector('input[name="question"]:checked').value;
-    const correctAnswer = data.answers.find(answer => answer.value === 1)?.text;
-    
-    successMessageElement.style.fontSize = wrongMessageElement.style.fontSize = "20px";
-    
+    const selectedValue = document.querySelector(
+      'input[name="question"]:checked'
+    ).value;
+    const correctAnswer = data.answers.find(
+      (answer) => answer.value === 1
+    )?.text;
+
+    successMessageElement.style.fontSize = wrongMessageElement.style.fontSize =
+      "20px";
+
     successMessageElement.innerHTML = `<span class="green">Well Done! You got it right!</span>`;
     wrongMessageElement.innerHTML = `<span class="red">You got it Wrong!</span><br><br>\nCorrect Answer : <br><span class="small"> '${correctAnswer}' </span><br><br>\nTry a different question! <br><br><hr>`;
-    
-    successMessageElement.style.display = wrongMessageElement.style.display = "none";
-    
+
+    successMessageElement.style.display = wrongMessageElement.style.display =
+      "none";
+
     if (correctAnswer === selectedValue) {
       successMessageElement.style.display = "block";
-      
+
       setTimeout(() => {
         successMessageElement.style.display = "none";
         modal.style.display = "none";
@@ -216,7 +232,7 @@ function checkAnswer(data) {
       }, 2000);
     } else {
       wrongMessageElement.style.display = "block";
-      
+
       setTimeout(() => {
         wrongMessageElement.style.display = "none";
         fetchQuestions();
@@ -225,25 +241,49 @@ function checkAnswer(data) {
   });
 }
 
+window.addEventListener("DOMContentLoaded", (event) => {
+  let audio = document.getElementById("gameAudio");
+  let muteButton = document.getElementById("muteButton");
+  let enableAudioButton = document.getElementById("enableAudio");
 
-
-window.addEventListener('DOMContentLoaded', (event) => {
-  let audio = document.getElementById('gameAudio');
-  let muteButton = document.getElementById('muteButton');
-  let enableAudioButton = document.getElementById('enableAudio');
-
-  muteButton.addEventListener('click', function() {
+  muteButton.addEventListener("click", function () {
     audio.muted = true;
   });
 
-  enableAudioButton.addEventListener('click', function() {
+  enableAudioButton.addEventListener("click", function () {
     audio.muted = false;
   });
 });
 
+async function createNewQuiz(e) {
+  e.preventDefault();
 
+  const question = e.target.question.value;
+  const answers = e.target.answer.value.split(",");
 
+  const data = {
+    question,
+    answers,
+  };
 
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
 
+  const response = await fetch("http://localhost:3000/medieval", options);
+
+  e.target.question.value = "";
+  e.target.answer.value = "";
+
+  if (response.ok) {
+    alert("Quiz added.");
+    // クイズが追加された後に新しいクイズを表示するなどの処理を追加できます
+    // 例えば fetchQuestions(); など
+  }
+}
 
 module.exports = { checkAnswer, fetchQuestions };

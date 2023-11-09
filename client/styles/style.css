@@ -14,36 +14,34 @@ body {
 }
 
 /* ICONS */
-.homepage-icons{
-  background: transparent; 
+.homepage-icons {
+  background: transparent;
   border: none;
   padding: 5px;
   outline: none;
 }
-.homepage-icons img{
+.homepage-icons img {
   width: 30px;
   height: 30px;
-  background: transparent; 
+  background: transparent;
 }
-.homepage-icons img:hover{
+.homepage-icons img:hover {
   transform: scale(1.1);
   background: none;
   border: none;
   outline: none;
 }
 
-
 /* MAZE  */
 .main-box {
   display: flex;
   flex-direction: column;
-  
+
   align-items: center;
   justify-content: center;
   height: 100vh;
   font-family: "new-rock";
 }
-
 
 #maze {
   display: grid;
@@ -92,7 +90,7 @@ body {
 
 .modal-content {
   font-size: 20px;
-  background-color: antiquewhite; /*modal content updated to be more readable for students*/ 
+  background-color: antiquewhite; /*modal content updated to be more readable for students*/
   margin: 30px auto;
   padding: 20px;
   border: 1px solid #888;
@@ -107,7 +105,7 @@ body {
   padding-right: 20px;
   font-size: 32px;
 }
-.instructions p{
+.instructions p {
   font-size: 30px;
 }
 
@@ -125,8 +123,7 @@ body {
   color: #ff5722;
 }
 
-
-#BackToHomepage{
+#BackToHomepage {
   background-color: rgba(0, 0, 0, 0.55);
   border-radius: 50px;
   color: white;
@@ -160,52 +157,52 @@ body {
   background-color: antiquewhite;
 }
 
-
 /* radio button styling in the MCQ checkpoint modal */
 #checkp input[type="radio"] {
-   display:none;
+  display: none;
 }
 
- #checkp label {
-   display: inline-block;
-   border: 1px solid rgba(67, 37, 16, 0.5);
-   padding: 10px 20px;
-   margin: 5px;
-   border-radius:5px;
-   color: black;
-   background-color: antiquewhite;
-   cursor:pointer;
+#checkp label {
+  display: inline-block;
+  border: 1px solid rgba(67, 37, 16, 0.5);
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  color: black;
+  background-color: antiquewhite;
+  cursor: pointer;
 }
 
-#checkp label:hover{
+#checkp label:hover {
   background-color: rgb(224, 179, 115);
 }
 
-
 #checkp input[type="radio"]:checked + label {
-   background-color: rgb(224, 179, 115);
-   color: #000;
-   box-shadow: inset 0px 0px 5px rgba(67, 37, 16, 0.5)
+  background-color: rgb(224, 179, 115);
+  color: #000;
+  box-shadow: inset 0px 0px 5px rgba(67, 37, 16, 0.5);
 }
-
-
 
 #checkp input[type="radio"]:focus + label {
-  outline: 2px solid #fff; 
-  outline-offset: 2px; 
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
-/*media query to fix the screen-sizing issue*/ 
+/* ADD POST */
+.addQuiz {
+  line-height: 5;
+  background-color: antiquewhite;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/*media query to fix the screen-sizing issue*/
 /*using average resolution for tv sizes - 1920px */
 
-@media (max-width:1920px){
-  .main-box{
-    height:100vh;
+@media (max-width: 1920px) {
+  .main-box {
+    height: 100vh;
   }
 }
-
-
-
-
-
-

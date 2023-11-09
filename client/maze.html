@@ -66,8 +66,18 @@
         </ul>
         </div>
       </div>
+      <div class="addQuiz">
+        <form onsubmit="createNewQuiz(event)">
+          <label for="question">Question:</label>
+          <input type="text" id="question" name="question" required>
+          <label for="answer">Answers (comma-separated):</label>
+          <input type="text" id="answer" name="answer" required>
+          <button type="submit">Add Quiz</button>
+        </form>
+      </div>
     </div>
     
+  
     <div id="endModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -116,7 +126,6 @@
         <button onclick = "clearRadios()" id="submit">Submit</button>
         </div>  
     </div>
-   
     </section>
 
     <script>
