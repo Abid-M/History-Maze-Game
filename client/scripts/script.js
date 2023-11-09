@@ -260,11 +260,17 @@ async function createNewQuiz(e) {
 
   const question = e.target.question.value;
   const answers = e.target.answer.value.split(",");
+  const correctAnswer = e.target.correctAnswer.value.trim();
 
   const data = {
     question,
-    answers,
+    answers: answers.map((text, index) => ({
+      text,
+      value: index === correctAnswer ? 1 : 0,
+    })),
+    correctAnswer: [{ text: correctAnswer, value: 1 }],
   };
+  console.log(data);
 
   const options = {
     method: "POST",
@@ -278,11 +284,10 @@ async function createNewQuiz(e) {
 
   e.target.question.value = "";
   e.target.answer.value = "";
+  e.target.correctAnswer.value = "";
 
   if (response.ok) {
     alert("Quiz added.");
-    // クイズが追加された後に新しいクイズを表示するなどの処理を追加できます
-    // 例えば fetchQuestions(); など
   }
 }
 
