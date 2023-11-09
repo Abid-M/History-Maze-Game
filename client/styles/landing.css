@@ -128,14 +128,12 @@
   font-family: 'Germania One';
 }
 
-/* Hide the radio input */
 /* Existing styles for .back-blur, h1, h3, etc. */
 
 /* Hide the radio input */
 .categoryList input[type="radio"] {
   display: none;
 }
-
 .categoryList label {
   cursor: pointer;
   padding: 10px 20px;
@@ -147,7 +145,6 @@
   transition: background-color 0.25s ease-out, transform 0.25s ease-out; /* Smooth transition for hover effect */
   box-shadow: 0 0 10px rgb(45, 45, 45); /* Shadow for depth */
 }
-
 /* Hover effect for labels */
 .categoryList label:hover {
   background-color: rgba(0, 0, 0, 0.65);; 
@@ -161,20 +158,16 @@
     0 0 10px 2px rgba(194, 32, 113, 1); /* outer pink glow with lower opacity */
   transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
-
 .categoryList input[type="radio"]:focus + label {
   outline: 2px solid #fff; 
   outline-offset: 2px; /
 }
-
 #industrial + label {
   font-family: 'DM Serif Display', serif;
 }
-
 #medieval + label {
   font-family: 'Germania One', cursive;
 }
-
 #enableAudio {
   justify-content: right;
   align-items: right;
@@ -182,14 +175,12 @@
   border: none;   
   padding: 0;     
   outline: none; 
-    
 }
 #enableAudio:hover img {
   transform: scale(1.1); 
   cursor: pointer;
 
 }
-
 #muteButton {
   background: none; 
   border: none;   
@@ -201,7 +192,6 @@
   cursor: pointer;
 
 }
-
 /* ICONS */
 .homepage-icons{
   background: transparent; 
