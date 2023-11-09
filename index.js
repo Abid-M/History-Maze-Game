@@ -42,13 +42,13 @@ app.get("/random/industrialRev", (req, res) => {
 app.post("/medieval", (req, res) => {
   const newQuiz = req.body;
   console.log(newQuiz);
-  quotes.push(newQuiz);
+  medievalQs.push(newQuiz);
   res.status(201).send(newQuiz);
 });
 
 app.post("/industrialRev", (req, res) => {
   const newQuiz = req.body;
   console.log(newQuiz);
-  quotes.push(newQuiz);
+  industrialQs.push(newQuiz);
   res.status(201).send(newQuiz);
 });

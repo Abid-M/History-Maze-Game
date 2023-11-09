@@ -255,40 +255,40 @@ window.addEventListener("DOMContentLoaded", (event) => {
   });
 });
 
-async function createNewQuiz(e) {
-  e.preventDefault();
+// async function createNewQuiz(e) {
+//   e.preventDefault();
 
-  const question = e.target.question.value;
-  const answers = e.target.answer.value.split(",");
-  const correctAnswer = e.target.correctAnswer.value.trim();
+//   const question = e.target.question.value;
+//   const answers = e.target.answer.value.split(",");
+//   const correctAnswer = e.target.correctAnswer.value.trim();
 
-  const data = {
-    question,
-    answers: answers.map((text, index) => ({
-      text,
-      value: index === correctAnswer ? 1 : 0,
-    })),
-    correctAnswer: [{ text: correctAnswer, value: 1 }],
-  };
-  console.log(data);
+//   const data = {
+//     question,
+//     answers: answers.map((text, index) => ({
+//       text,
+//       value: index === correctAnswer ? 1 : 0,
+//     })),
+//     correctAnswer: [{ text: correctAnswer, value: 1 }],
+//   };
+//   console.log(data);
 
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
+//   const options = {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(data),
+//   };
 
-  const response = await fetch("http://localhost:3000/medieval", options);
+//   const response = await fetch("http://localhost:3000/medieval", options);
 
-  e.target.question.value = "";
-  e.target.answer.value = "";
-  e.target.correctAnswer.value = "";
+//   e.target.question.value = "";
+//   e.target.answer.value = "";
+//   e.target.correctAnswer.value = "";
 
-  if (response.ok) {
-    alert("Quiz added.");
-  }
-}
+//   if (response.ok) {
+//     alert("Quiz added.");
+//   }
+// }
 
 module.exports = { checkAnswer, fetchQuestions };
