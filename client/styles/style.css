@@ -191,12 +191,22 @@ body {
 
 /* ADD POST */
 .addQuiz {
-  line-height: 5;
+  visibility: hidden;
+  line-height: 3;
   background-color: antiquewhite;
-  width: 80%;
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  padding: 10px;
+}
+.addQuiz.show {
+  opacity: 1;
+  visibility: visible;
+}
+#toggleFormButton {
+  line-height: 2;
+  padding: 0 5px;
+  background-color: antiquewhite;
 }
 
 /*media query to fix the screen-sizing issue*/

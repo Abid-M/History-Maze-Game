@@ -255,6 +255,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   });
 });
 
+// ADD NEW QUIZ
 async function createNewQuiz(e) {
   e.preventDefault();
 
@@ -288,6 +289,21 @@ async function createNewQuiz(e) {
 
   if (response.ok) {
     alert("Quiz added.");
+  }
+}
+// ADD QUIZ TOGGLE BTN
+const toggleFormButton = document.getElementById("toggleFormButton");
+
+toggleFormButton.addEventListener("click", function () {
+  toggleForm();
+});
+
+function toggleForm() {
+  const addQuizForm = document.getElementById("addQUiz");
+
+  if (addQuizForm) {
+    // Toggle the 'show' class
+    addQuizForm.classList.toggle("show");
   }
 }
 
