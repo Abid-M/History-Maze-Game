@@ -11,6 +11,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   font-family: "New Rocker", cursive;
+  height: 100vh;
 }
 
 /* ICONS */
