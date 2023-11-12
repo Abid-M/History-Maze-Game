@@ -178,9 +178,8 @@ document.addEventListener("keydown", (event) => {
       }, 5000);
     }
   });
-}```
-
-
+}
+```
 
 ### Challenges
 
